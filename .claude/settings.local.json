@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(unzip -q -c obgynbillingpro_master_v3.docx word/document.xml)",
+      "Bash(sed 's/<[^>]*>//g')",
+      "Bash(unzip -c obgynbillingpro_master_v3.docx word/document.xml)",
+      "Bash(npx tsc *)",
+      "Bash(npx next *)",
+      "Bash(npm install *)",
+      "Bash(npm run *)"
+    ]
+  }
+}

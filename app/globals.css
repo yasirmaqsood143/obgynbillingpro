@@ -1,26 +1,138 @@
 @import "tailwindcss";
 
+/* ── Font variable fallbacks ─────────────────────────────────────────────────
+   next/font sets these CSS variables on <html>. The fallbacks here ensure
+   styles work during hydration before the font bundle loads.
+────────────────────────────────────────────────────────────────────────────── */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Typography */
+  --font-inter:    "Inter",            system-ui, sans-serif;
+  --font-playfair: "Playfair Display", Georgia,   serif;
+  --font-mono:     "JetBrains Mono",   "Fira Code", monospace;
+
+  /* Brand colors — use via style={{color:'var(--teal)'}} or Tailwind [#hex] */
+  --teal:          #0E7C7B;
+  --teal-dark:     #065F5E;
+  --teal-light:    #E0F4F4;
+  --navy:          #1A2B3C;
+  --navy-alt:      #2B2D42;
+  --body-text:     #4A5568;
+  --light-bg:      #F7FAFC;
+  --success:       #276749;
+  --terracotta:    #E2725B;
+  --warning:       #D97706;
+  --accent-blue:   #2B6CB0;
+  --border:        #E2E8F0;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* ── Base resets ─────────────────────────────────────────────────────────────
+   Tailwind's preflight handles most resets; these extras are safe to keep.
+────────────────────────────────────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin:  0;
+  padding: 0;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-inter);
+  -webkit-font-smoothing:  antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/*
+  ⚠  NO global h1–h6 font rule.
+  Use .font-display or style={{ fontFamily: "var(--font-playfair)" }} only
+  where the design explicitly calls for Playfair Display.
+*/
+
+/* ── Utility: opt into Playfair on specific elements ─────────────────────── */
+.font-display {
+  font-family: var(--font-playfair);
+}
+
+/* ── Utility: monospace (CPT/ICD codes, calculator outputs) ─────────────── */
+code, kbd, samp, pre {
+  font-family: var(--font-mono), monospace;
+}
+
+/* ── Smooth transitions for interactive elements ─────────────────────────── */
+a, button {
+  transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+}
+
+/* ── Remove default list styles ──────────────────────────────────────────── */
+ul, ol {
+  list-style: none;
+}
+
+/* ── Image defaults ──────────────────────────────────────────────────────── */
+img, video {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ── Header height utility ───────────────────────────────────────────────────
+   Use class="h-18" anywhere you need exactly 72px. Tailwind arbitrary value
+   h-[72px] also works — both are equivalent. Pick one and stay consistent.
+────────────────────────────────────────────────────────────────────────────── */
+.h-18 {
+  height: 4.5rem; /* 72px */
+}
+
+/* ── Header: background transition ───────────────────────────────────────────
+   FIX: Removed `will-change: background-color, box-shadow` from the header
+   element. That property promotes the element to its own compositor layer,
+   which causes child dropdowns (position: absolute) to be clipped or rendered
+   below other stacking contexts in Chrome/Safari. The JS-driven class swap +
+   Tailwind transition-all handles the scroll effect without will-change.
+────────────────────────────────────────────────────────────────────────────── */
+
+/* ── Header: desktop dropdown animation ──────────────────────────────────────
+   FIX: Scoped to [data-dropdown] instead of the broad `header nav .absolute`
+   selector. The old selector matched ANY .absolute child inside nav — including
+   tooltip wrappers and badge elements — causing stray flicker. Add
+   data-dropdown="" to the dropdown <div> in Header.tsx (already included below).
+────────────────────────────────────────────────────────────────────────────── */
+[data-dropdown] {
+  animation: dropdownFadeIn 0.18s ease forwards;
+}
+
+@keyframes dropdownFadeIn {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0);    }
+}
+
+/* ── Header: mobile menu slide-down ──────────────────────────────────────────
+   FIX: Old selector targeted `.bg-white` but the mobile panel uses bg-[#0A1929]
+   (dark navy). Scoped to [data-mobile-menu] attribute instead — reliable
+   regardless of background color class. Add data-mobile-menu="" to the mobile
+   menu <div> in Header.tsx (already included in the updated component).
+────────────────────────────────────────────────────────────────────────────── */
+[data-mobile-menu] {
+  animation: mobileMenuSlide 0.22s ease forwards;
+}
+
+@keyframes mobileMenuSlide {
+  from { opacity: 0; transform: translateY(-8px); }
+  to   { opacity: 1; transform: translateY(0);    }
+}
+
+/* ── Active nav link ──────────────────────────────────────────────────────────
+   Apply via usePathname() in Header.tsx:
+     className={pathname === href ? "nav-link-active" : ""}
+────────────────────────────────────────────────────────────────────────────── */
+.nav-link-active {
+  color:            #0E7C7B !important;
+  background-color: #E0F4F4;
+  border-radius:    6px;
 }
