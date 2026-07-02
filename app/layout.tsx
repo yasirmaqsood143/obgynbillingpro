@@ -37,6 +37,7 @@ export const metadata: Metadata = {
     process.env.NEXT_PUBLIC_SITE_URL || "https://obgynbillingpro.com"
   ),
   alternates: { canonical: "/" },
+ 
   openGraph: {
     title: "OB/GYN Billing Services | obgynbillingpro.com",
     description:
