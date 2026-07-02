@@ -4,8 +4,9 @@
 import type { Metadata } from "next";
 import { Inter, Playfair_Display, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
-import { Analytics } from "@vercel/analytics/next";
 
+import { Analytics } from "@vercel/analytics/next";
+import WhatsAppButton from "./components/layout/WhatsAppButton";
 import Header from "./components/layout/Header";
 import Footer from "./components/layout/Footer";
 
@@ -48,6 +49,7 @@ export const metadata: Metadata = {
   },
 };
 
+
 // ── Root Layout ───────────────────────────────────────────────────────────────
 export default function RootLayout({
   children,
@@ -78,7 +80,9 @@ export default function RootLayout({
         </main>
         <Footer />
         <Analytics />
+        <WhatsAppButton />
       </body>
     </html>
   );
+  
 }
