@@ -6,6 +6,7 @@ import { Inter, Playfair_Display, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
 import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import WhatsAppButton from "./components/layout/WhatsAppButton";
 import Header from "./components/layout/Header";
 import Footer from "./components/layout/Footer";
@@ -80,6 +81,7 @@ export default function RootLayout({
         </main>
         <Footer />
         <Analytics />
+        <SpeedInsights />
         <WhatsAppButton />
       </body>
     </html>
