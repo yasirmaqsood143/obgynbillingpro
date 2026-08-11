@@ -289,6 +289,57 @@ const blogPosts = [
   },
 ];
 
+const faqs = [
+  {
+    q: "What does an OB/GYN medical billing company do?",
+    a: "OBGYNBillingPro handles the entire revenue cycle for obstetrics and gynecology practices — eligibility verification, charge capture, CPT/ICD-10 coding, claim submission, AI-powered denial management, AR follow-up, and patient collections. Because we bill exclusively for OB/GYN, we know global maternity packages, GYN surgical modifiers, and payer-specific rules that generalist billers miss.",
+  },
+  {
+    q: "Why should I outsource OB/GYN billing instead of keeping it in-house?",
+    a: "Outsourcing OB/GYN billing to a specialist team typically raises your net collection rate, lowers denial rates, and removes the overhead of hiring, training, and covering for in-house billers. Our clients average a 98.2% first-pass acceptance rate and a 1.4% denial rate versus the 19% industry average — with no long-term contracts or setup fees.",
+  },
+  {
+    q: "Is OBGYNBillingPro HIPAA compliant?",
+    a: "Yes. We are fully HIPAA compliant with a signed BAA available for every client. All ePHI is encrypted (AES-256 at rest, TLS 1.3+ in transit), access is protected with phishing-resistant MFA, and we maintain immutable audit logs. SOC 2 Type II is in progress.",
+  },
+  {
+    q: "What OB/GYN billing services do you offer?",
+    a: "Global maternity billing, GYN surgery coding, AI denial management, full revenue cycle management, physician credentialing, coding audits, telehealth billing, and new practice billing setup — all specialized for women's health practices.",
+  },
+  {
+    q: "How much does OB/GYN billing cost?",
+    a: "Pricing depends on practice size and volume, typically structured as a percentage of collections or a flat monthly retainer. Most practices find that outsourcing costs less than an equivalent in-house billing team while collecting more. Book a free revenue audit and we'll show you a specific projection for your practice.",
+  },
+];
+
+const homeSchema = {
+  "@context": "https://schema.org",
+  "@type": ["MedicalBusiness", "FAQPage"],
+  name: "OBGYNBillingPro",
+  description:
+    "The #1 OB/GYN medical billing company. Specialized OB/GYN medical billing and revenue cycle management — global maternity billing, GYN surgery coding, AI-powered denial management, and physician credentialing.",
+  url: "https://obgynbillingpro.com",
+  telephone: process.env.NEXT_PUBLIC_PHONE,
+  email: process.env.NEXT_PUBLIC_EMAIL,
+  areaServed: "US",
+  medicalSpecialty: "Obstetrics and Gynecology",
+  knowsAbout: [
+    "OB/GYN medical billing",
+    "Global maternity billing",
+    "GYN surgery coding",
+    "Revenue cycle management",
+    "Denial management",
+    "Physician credentialing",
+    "HIPAA compliance",
+  ],
+  hasCredential: ["AAPC CPC-OB", "AHIMA", "MGMA", "HIMSS"],
+  mainEntity: faqs.map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: { "@type": "Answer", text: f.a },
+  })),
+};
+
 // ─────────────────────────────────────────────────────────────────────────────
 // SECTION WRAPPER
 // ─────────────────────────────────────────────────────────────────────────────
@@ -404,6 +455,11 @@ export default function HomePage() {
     <>
       <style>{GRID_CSS}</style>
 
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(homeSchema) }}
+      />
+
       {/* ══════════════════════════════════════════════════════════════════
           §1 HERO
       ══════════════════════════════════════════════════════════════════ */}
@@ -449,7 +505,7 @@ export default function HomePage() {
               </h1>
 
               <p style={{ fontSize:"1rem", color:"rgba(255,255,255,0.66)", lineHeight:1.8, maxWidth:520, marginBottom:"2rem" }}>
-                <strong style={{ color:"rgba(255,255,255,0.85)", fontWeight:600 }}>OBGYNBillingPro</strong> is the only Revenue Cycle Management platform built
+                <strong style={{ color:"rgba(255,255,255,0.85)", fontWeight:600 }}>OBGYNBillingPro</strong> is the #1 OB/GYN medical billing company built
                 exclusively for obstetrics and gynecology practices. From global maternity billing
                 and GYN surgery CPT coding to AI-powered denial management, we make it simple to
                 outsource OB/GYN billing and recover every dollar your practice earns.
@@ -944,6 +1000,37 @@ export default function HomePage() {
                   </p>
                   <span style={{ fontSize:"0.76rem", fontWeight:600, color:C.teal }}>Read more →</span>
                 </Link>
+              </FadeIn>
+            ))}
+          </div>
+        </div>
+      </Section>
+
+      {/* ══════════════════════════════════════════════════════════════════
+          §10.5 FAQ
+      ══════════════════════════════════════════════════════════════════ */}
+      <Section bg={C.white}>
+        <div style={{ ...sectionWrap, maxWidth: 820 }}>
+          <FadeIn style={{ textAlign: "center" }}>
+            <SectionHead
+              center
+              eyebrowText="OB/GYN Billing FAQ"
+              heading="Questions About Outsourcing Your OB/GYN Billing"
+              sub="Everything practices ask before switching to a specialized OB/GYN medical billing company."
+            />
+          </FadeIn>
+          <div style={{ display: "grid", gap: 14 }}>
+            {faqs.map((faq, i) => (
+              <FadeIn key={i} delay={i * 0.06}>
+                <details style={{ background: C.bgLight, border: `1px solid ${C.border}`, borderRadius: 12 }}>
+                  <summary style={{ padding: "18px 22px", fontSize: "0.95rem", fontWeight: 600, color: C.navy, cursor: "pointer", listStyle: "none", display: "flex", justifyContent: "space-between", alignItems: "center", gap: "1rem" }}>
+                    {faq.q}
+                    <span aria-hidden="true" style={{ color: C.teal, fontSize: "1.3rem", flexShrink: 0 }}>+</span>
+                  </summary>
+                  <div style={{ padding: "0 22px 20px", color: C.bodyText, fontSize: "0.88rem", lineHeight: 1.75 }}>
+                    {faq.a}
+                  </div>
+                </details>
               </FadeIn>
             ))}
           </div>
