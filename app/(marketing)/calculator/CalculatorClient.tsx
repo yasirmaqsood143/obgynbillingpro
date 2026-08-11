@@ -1,8 +1,6 @@
 "use client";
 
 import { create } from 'zustand';
-import { useState } from 'react';
-import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 
 // ── Zustand store ─────────────────────────────────────────────────────────────
@@ -31,13 +29,9 @@ interface CalcStore {
   step:     number;
   inputs:   CalcInputs;
   results:  CalcResults | null;
-  unlocked: boolean;
-  name:     string;
-  email:    string;
   setStep:  (s: number) => void;
   setInput: (k: keyof CalcInputs, v: string) => void;
   compute:  () => void;
-  unlock:   (name: string, email: string) => void;
 }
 
 const EMPTY_INPUTS: CalcInputs = {
@@ -52,9 +46,6 @@ const useCalcStore = create<CalcStore>((set, get) => ({
   step: 1,
   inputs: EMPTY_INPUTS,
   results: null,
-  unlocked: false,
-  name: '',
-  email: '',
 
   setStep: (step) => set({ step }),
 
@@ -84,8 +75,6 @@ const useCalcStore = create<CalcStore>((set, get) => ({
 
     set({ results: { ncr, annualRevLost, overhead, missedModifier, timelyFilingRisk, netRecovery } });
   },
-
-  unlock: (name, email) => set({ name, email, unlocked: true }),
 }));
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
@@ -160,7 +149,7 @@ function Field({ label, id, value, onChange, type = 'number', placeholder, prefi
 // ── Steps ─────────────────────────────────────────────────────────────────────
 
 function Step1() {
-  const { inputs, setInput, setStep, compute } = useCalcStore();
+  const { inputs, setInput, setStep } = useCalcStore();
 
   function next() {
     if (!inputs.grossCharges || !inputs.contractualAdj || !inputs.paymentsReceived) {
@@ -263,62 +252,8 @@ function Step3() {
   );
 }
 
-function GateOverlay({ onUnlock }: { onUnlock: (name: string, email: string) => void }) {
-  const [name, setName]   = useState('');
-  const [email, setEmail] = useState('');
-  const [err, setErr]     = useState('');
-  const [busy, setBusy]   = useState(false);
-
-  async function submit(e: React.FormEvent) {
-    e.preventDefault();
-    if (!name.trim() || !/^\S+@\S+\.\S+$/.test(email)) { setErr('Please enter your name and a valid email.'); return; }
-    setBusy(true);
-    try {
-      await fetch('/api/leads', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name, email, source: 'calculator', practiceSize: useCalcStore.getState().inputs.practiceSize || undefined }),
-      });
-    } catch { /* non-blocking */ }
-    onUnlock(name, email);
-  }
-
-  return (
-    <div style={{
-      position: 'absolute', inset: 0, borderRadius: 16, zIndex: 10,
-      display: 'flex', alignItems: 'center', justifyContent: 'center',
-      backdropFilter: 'blur(12px)',
-      background: 'rgba(255,255,255,0.85)',
-    }}>
-      <div style={{ maxWidth: 380, width: '100%', padding: '36px 32px', background: '#FFFFFF', borderRadius: 16, boxShadow: '0 20px 60px rgba(0,0,0,0.15)', textAlign: 'center' }}>
-        <div style={{ fontSize: 36, marginBottom: 12 }}>🔓</div>
-        <h3 style={{ fontSize: 20, fontWeight: 700, color: '#1A2B3C', marginBottom: 8 }}>Unlock Your Results</h3>
-        <p style={{ color: '#4A5568', fontSize: 14, lineHeight: 1.65, marginBottom: 24 }}>
-          Enter your name and email to see your full revenue recovery estimate — free, no commitment.
-        </p>
-        <form onSubmit={submit}>
-          <input type="text" value={name} onChange={(e) => setName(e.target.value)} placeholder="Your name" required
-            style={{ width: '100%', padding: '11px 14px', border: '1px solid #E2E8F0', borderRadius: 8, fontSize: 14, marginBottom: 12, fontFamily: 'var(--font-inter)', boxSizing: 'border-box' as const }} />
-          <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Work email address" required
-            style={{ width: '100%', padding: '11px 14px', border: '1px solid #E2E8F0', borderRadius: 8, fontSize: 14, marginBottom: 16, fontFamily: 'var(--font-inter)', boxSizing: 'border-box' as const }} />
-          {err && <p style={{ color: '#E53E3E', fontSize: 12, marginBottom: 12 }}>{err}</p>}
-          <button type="submit" disabled={busy} style={{
-            width: '100%', padding: '13px', background: '#0E7C7B', color: '#FFFFFF',
-            border: 'none', borderRadius: 8, fontWeight: 700, fontSize: 14,
-            cursor: busy ? 'not-allowed' : 'pointer', fontFamily: 'var(--font-inter)',
-          }}>
-            {busy ? 'Unlocking…' : 'Show My Revenue Recovery →'}
-          </button>
-          <p style={{ color: '#718096', fontSize: 11, marginTop: 10 }}>🔒 HIPAA compliant · No spam · Unsubscribe anytime</p>
-        </form>
-      </div>
-    </div>
-  );
-}
-
 function Results() {
-  const { results, unlocked, unlock, name } = useCalcStore();
-  const router = useRouter();
+  const { results } = useCalcStore();
   if (!results) return null;
 
   const rows = [
@@ -330,40 +265,34 @@ function Results() {
   ];
 
   return (
-    <div style={{ position: 'relative' }}>
-      {!unlocked && <GateOverlay onUnlock={(n, e) => { unlock(n, e); router.push('/thank-you'); }} />}
+    <div>
+      <h3 style={{ fontSize: 20, fontWeight: 700, color: '#1A2B3C', marginBottom: 6 }}>Your Revenue Recovery Estimate</h3>
+      <p style={{ color: '#4A5568', fontSize: 14, marginBottom: 24 }}>Here&apos;s your personalized breakdown:</p>
 
-      <div style={{ filter: unlocked ? 'none' : 'blur(6px)', transition: 'filter 0.4s ease' }}>
-        <h3 style={{ fontSize: 20, fontWeight: 700, color: '#1A2B3C', marginBottom: 6 }}>Your Revenue Recovery Estimate</h3>
-        {unlocked && <p style={{ color: '#4A5568', fontSize: 14, marginBottom: 24 }}>Hi {name}, here&apos;s your personalized breakdown:</p>}
-
-        {rows.map((row, i) => (
-          <div key={i} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '14px 0', borderBottom: '1px solid #E2E8F0' }}>
-            <div>
-              <div style={{ fontSize: 14, fontWeight: 600, color: '#2B2D42' }}>{row.label}</div>
-              <div style={{ fontSize: 12, color: row.color }}>{row.note}</div>
-            </div>
-            <div style={{ fontSize: 18, fontWeight: 800, color: row.color }}>{row.value}</div>
+      {rows.map((row, i) => (
+        <div key={i} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '14px 0', borderBottom: '1px solid #E2E8F0' }}>
+          <div>
+            <div style={{ fontSize: 14, fontWeight: 600, color: '#2B2D42' }}>{row.label}</div>
+            <div style={{ fontSize: 12, color: row.color }}>{row.note}</div>
           </div>
-        ))}
-
-        <div style={{ marginTop: 20, padding: '20px', background: 'linear-gradient(135deg, #0E7C7B, #065F5E)', borderRadius: 12 }}>
-          <div style={{ color: 'rgba(255,255,255,0.8)', fontSize: 13, marginBottom: 4 }}>Net Recovery Opportunity</div>
-          <div style={{ fontSize: 'clamp(28px,5vw,44px)', fontWeight: 800, color: '#FFFFFF' }}>{fmt(results.netRecovery)}</div>
-          <div style={{ color: 'rgba(255,255,255,0.7)', fontSize: 12, marginTop: 4 }}>estimated annual recovery from outsourcing to OBGYNBillingPro</div>
+          <div style={{ fontSize: 18, fontWeight: 800, color: row.color }}>{row.value}</div>
         </div>
+      ))}
 
-        {unlocked && (
-          <Link href="/contact" style={{
-            display: 'block', marginTop: 20, padding: '14px', textAlign: 'center',
-            background: '#0E7C7B', color: '#FFFFFF', borderRadius: 8,
-            fontWeight: 700, fontSize: 14, letterSpacing: '0.05em',
-            textTransform: 'uppercase', textDecoration: 'none',
-          }}>
-            Get My Free Revenue Audit →
-          </Link>
-        )}
+      <div style={{ marginTop: 20, padding: '20px', background: 'linear-gradient(135deg, #0E7C7B, #065F5E)', borderRadius: 12 }}>
+        <div style={{ color: 'rgba(255,255,255,0.8)', fontSize: 13, marginBottom: 4 }}>Net Recovery Opportunity</div>
+        <div style={{ fontSize: 'clamp(28px,5vw,44px)', fontWeight: 800, color: '#FFFFFF' }}>{fmt(results.netRecovery)}</div>
+        <div style={{ color: 'rgba(255,255,255,0.7)', fontSize: 12, marginTop: 4 }}>estimated annual recovery from outsourcing to OBGYNBillingPro</div>
       </div>
+
+      <Link href="/contact" style={{
+        display: 'block', marginTop: 20, padding: '14px', textAlign: 'center',
+        background: '#0E7C7B', color: '#FFFFFF', borderRadius: 8,
+        fontWeight: 700, fontSize: 14, letterSpacing: '0.05em',
+        textTransform: 'uppercase', textDecoration: 'none',
+      }}>
+        Get My Free Revenue Audit →
+      </Link>
     </div>
   );
 }
