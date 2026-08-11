@@ -1,8 +1,7 @@
 // app/(marketing)/contact/page.tsx
-// Server component — exports metadata + JSON-LD + renders client ContactForm.
+// Server component — exports metadata + JSON-LD + Google Calendar scheduler.
 
 import type { Metadata } from 'next';
-import ContactForm from './ContactForm';
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
@@ -84,27 +83,27 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* Form + sidebar */}
+      {/* Google Calendar Appointment Scheduling */}
       <section style={{ padding: '72px 24px', background: '#FFFFFF' }}>
-        <div style={{ maxWidth: 1100, margin: '0 auto' }}>
-          <ContactForm />
-        </div>
-      </section>
-
-      {/* Calendly placeholder */}
-      <section style={{ padding: '64px 24px', background: '#F7FAFC', borderTop: '1px solid #E2E8F0' }}>
         <div style={{ maxWidth: 800, margin: '0 auto', textAlign: 'center' }}>
-          <h2 style={{ fontSize: 'clamp(20px,3vw,28px)', fontWeight: 700, color: '#1A2B3C', marginBottom: 12 }}>
-            Prefer to Book Directly?
+          <h2 style={{ fontSize: 'clamp(22px,3.5vw,32px)', fontWeight: 700, color: '#1A2B3C', marginBottom: 12 }}>
+            Book Your Free Revenue Audit
           </h2>
-          <p style={{ color: '#4A5568', fontSize: 15, marginBottom: 28 }}>
-            Pick a time for a 30-minute discovery call with a CPC-OB specialist.
+          <p style={{ color: '#4A5568', fontSize: 16, marginBottom: 32 }}>
+            Pick a time that works for you — a 30-minute consultation with a CPC-OB certified specialist. No obligation.
           </p>
           <div style={{
-            background: '#FFFFFF', border: '2px dashed #CBD5E0', borderRadius: 16,
-            padding: '56px 32px', color: '#718096', fontSize: 15,
+            background: '#FFFFFF', border: '1px solid #E2E8F0', borderRadius: 16,
+            padding: 12, overflow: 'hidden',
           }}>
-            📅 Calendly embed loads here — add your scheduling URL to activate.
+            <iframe
+              src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ1Tm0Ba4LjScCYjyJH8NPFbP6VtLGC1cR9cDApVjGxT_cCPQQ-h6FKCjzDNjYZbJ71Xgn0mDkDd?gv=true"
+              title="Book a free OB/GYN revenue audit with OBGYNBillingPro"
+              style={{ border: 0, display: 'block', width: '100%', borderRadius: 12 }}
+              width="100%"
+              height={600}
+              frameBorder={0}
+            />
           </div>
         </div>
       </section>
