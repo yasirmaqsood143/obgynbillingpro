@@ -80,6 +80,12 @@ Yet many practices never bill 59430, either because staff don't know it exists a
 
 Practices that audit their postpartum billing consistently find 59430 is their most-underbilled code, sometimes representing $8,000–$15,000 in annual missed revenue for a solo OB/GYN.
 
+## Bonus Mistake: Missing LARC J-Codes on Postpartum Placement
+
+Immediate postpartum long-acting reversible contraception (LARC) is increasingly common — but the device supply is billed separately from the insertion procedure, and practices routinely drop the J-code entirely. When you place an IUD (CPT 58300) or implant, the device itself must be billed with the correct LARC J-code: **J7296, J7297, and J7298** (levonorgestrel-releasing IUDs, differentiated by brand and dosage), or the appropriate code for other devices.
+
+Billing the 58300 insertion without the matching J-code means the payer reimburses the procedure but not the device — a device the practice paid $800–$1,000 to stock. Missed LARC J-code billing (J7296, J7297, J7298) is one of the highest dollar-per-claim revenue leaks in the entire specialty, and it hides inside otherwise clean-looking maternity and postpartum claims.
+
 ## The Bottom Line
 
 Global maternity billing errors are systematic — if your process has a flaw, you're making the same mistake on every applicable patient. A single coding audit can identify and quantify these errors, and most corrections can be implemented within one billing cycle.
@@ -289,7 +295,7 @@ This guide covers core codes — your practice's specific code mix should be rev
     relatedService: 'Global Maternity Billing',
     relatedServiceHref: '/global-maternity-billing',
     content: `
-The 2027 maternity billing transition represents the most significant change to OB/GYN reimbursement in a generation. CMS has proposed moving from the current global maternity package model to a service-based (component) billing model — and if your practice is not preparing now, the revenue impact could be severe.
+The 2027 maternity billing transition represents the most significant change to OB/GYN reimbursement in a generation. CMS has proposed moving from the current global maternity package model to a service-based (component) billing model — and if your practice is not preparing now, the revenue impact could be severe. This 2027 maternity billing transition guide breaks down exactly what is changing, the proposed CMS timeline, and the concrete steps to prepare your practice.
 
 ## What Is Changing
 

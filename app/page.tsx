@@ -233,7 +233,7 @@ const painPoints = [
   { pain: "Global maternity billing errors",          solution: "Automated global period tracking, antepartum split billing, mid-pregnancy insurance change management" },
   { pain: "GYN surgery undercoding",                  solution: "CPT-level review by CPC-OB certified coders — robotic, laparoscopic, and open procedure expertise" },
   { pain: "Lost revenue from missed LARC J-codes",    solution: "AI Revenue Leakage Scanner flags J7296–J7298 missing alongside CPT 58300 insertion procedures" },
-  { pain: "Staff bandwidth limitations",              solution: "Full-cycle RCM outsourcing with a dedicated account manager assigned per practice" },
+  { pain: "Staff bandwidth limitations",              solution: "Outsource OB/GYN billing to a dedicated specialist team — full-cycle RCM with an account manager assigned per practice" },
   { pain: "Payer AI downcoding engines",              solution: "Agentic AI generates structured, defensible clinical data for every appeal submission" },
   { pain: "2027 maternity code transition",           solution: "Service-based billing module already in development — clients get priority migration support" },
   { pain: "Rising cost to rework denied claims ($57)", solution: "Predictive pre-submission claim scrubbing eliminates rework before claims leave your practice" },
@@ -451,8 +451,8 @@ export default function HomePage() {
               <p style={{ fontSize:"1rem", color:"rgba(255,255,255,0.66)", lineHeight:1.8, maxWidth:520, marginBottom:"2rem" }}>
                 <strong style={{ color:"rgba(255,255,255,0.85)", fontWeight:600 }}>OBGYNBillingPro</strong> is the only Revenue Cycle Management platform built
                 exclusively for obstetrics and gynecology practices. From global maternity billing
-                and GYN surgery CPT coding to AI-powered denial management — we recover every
-                dollar your practice earns.
+                and GYN surgery CPT coding to AI-powered denial management, we make it simple to
+                outsource OB/GYN billing and recover every dollar your practice earns.
               </p>
 
               {/* CTAs */}

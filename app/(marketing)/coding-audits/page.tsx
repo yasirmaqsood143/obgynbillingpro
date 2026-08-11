@@ -185,7 +185,7 @@ export default function CodingAuditsPage() {
             OB/GYN Coding Audits That Find What You Are Missing
           </h1>
           <p style={{ fontSize: 18, color: '#CBD5E0', lineHeight: 1.7, maxWidth: 620, marginBottom: 36 }}>
-            The average OB/GYN practice loses 15–30% of collectable revenue to coding errors. Our certified auditors find the missed codes, fix the modifier errors, and eliminate the OIG exposure — with a written corrective action report in 14 business days.
+            The average OB/GYN practice loses 15–30% of collectable revenue to coding errors. Our OB/GYN coding audit service puts CPC-OB certified auditors on your claims to find the missed codes, fix the modifier errors, and eliminate the OIG exposure — with a written corrective action report in 14 business days.
           </p>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 12 }}>
             <a href="/contact" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: T.teal, color: T.white, padding: '14px 28px', borderRadius: 8, fontWeight: 600, fontSize: 14, letterSpacing: '0.05em', textTransform: 'uppercase', textDecoration: 'none' }}>

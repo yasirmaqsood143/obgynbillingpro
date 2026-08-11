@@ -211,8 +211,8 @@ const setupServices = [
   },
   {
     icon: '💰',
-    title: 'Fee Schedule Build',
-    description: 'Comprehensive OB/GYN fee schedule loaded at 200–250% of Medicare rates. Global maternity packages, in-office procedures, preventive care, and telehealth codes.',
+    title: 'Fee Schedule Optimization',
+    description: 'Comprehensive OB/GYN fee schedule optimization — every code loaded at 200–250% of Medicare rates. Global maternity packages, in-office procedures, preventive care, and telehealth codes.',
   },
   {
     icon: '📄',

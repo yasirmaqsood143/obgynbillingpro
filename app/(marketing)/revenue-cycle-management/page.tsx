@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
-    title: 'OB/GYN Revenue Cycle Management | Full RCM',
+    title: 'OB/GYN Revenue Cycle Management Company | Full RCM',
     description:
       'Full-cycle OB/GYN revenue cycle management — from eligibility verification to patient collections. 95%+ NCR, AR days under 35. Athenahealth, eCW, NextGen integration.',
     alternates: { canonical: 'https://obgynbillingpro.com/revenue-cycle-management' },
@@ -35,11 +35,11 @@ const schema = {
 
 const rcmCycle = [
   { step: '01', title: 'Eligibility Verification', desc: 'Real-time insurance verification for every OB/GYN patient before the appointment. Catches expired coverage, wrong payer, and missing authorizations before they cause denials.', icon: '✓' },
-  { step: '02', title: 'Prior Authorization',       desc: 'Automated auth requests for OB ultrasounds, GYN surgeries, robotic procedures, and high-cost diagnostic services. Auth tracking dashboard included.', icon: '📋' },
+  { step: '02', title: 'Prior Authorization',       desc: 'Prior authorization for OB/GYN surgery, OB ultrasounds, robotic procedures, and high-cost diagnostic services. Automated auth requests with a tracking dashboard included.', icon: '📋' },
   { step: '03', title: 'Charge Capture',            desc: 'Same-day charge entry from EHR visit notes. Automated scrubbing for CPT/ICD-10 errors, missing modifiers, and bundling conflicts before submission.', icon: '💡' },
   { step: '04', title: 'Claims Submission',         desc: 'Clean claim rate of 98.2% on first submission. Electronic submission to all payers via 837P/837I EDI. Real-time submission confirmation.', icon: '📤' },
   { step: '05', title: 'Payment Posting',           desc: 'ERA/EOB auto-posting with exception flagging. Contractual adjustment verification against fee schedule. Underpayment identification and recovery.', icon: '💰' },
-  { step: '06', title: 'AR Follow-Up',              desc: 'Systematic AR follow-up on all claims at 30/60/90-day intervals. Priority queue based on dollar value and aging. No claim slips past filing deadline.', icon: '🔔' },
+  { step: '06', title: 'AR Follow-Up',              desc: 'Systematic AR follow-up on all claims at 30/60/90-day intervals, driving measurable AR days improvement. Priority queue based on dollar value and aging. No claim slips past filing deadline.', icon: '🔔' },
   { step: '07', title: 'Denial Management',         desc: 'AI-powered denial detection and appeal drafting. CARC/RARC auto-analysis. 94% appeal success rate on first submission.', icon: '🛡️' },
   { step: '08', title: 'Patient Collections',       desc: 'HIPAA-compliant patient balance billing. Online payment portal. Payment plans. Compassionate collections protocols for obstetric patients.', icon: '👤' },
 ];
@@ -92,7 +92,7 @@ export default function RcmPage() {
               Full-Cycle OB/GYN Revenue Management — From Eligibility to Collections
             </h1>
             <p style={{ color: 'rgba(255,255,255,0.75)', fontSize: 17, lineHeight: 1.75, marginBottom: 32 }}>
-              8-step revenue cycle, purpose-built for OB/GYN. Real-time KPI dashboards. EHR integration with Athenahealth, eCW, and NextGen. 97.6% average net collection rate.
+              OBGYNBillingPro is a dedicated OB/GYN revenue cycle management company delivering full obstetrics RCM services — an 8-step revenue cycle, purpose-built for OB/GYN. Real-time KPI dashboards. EHR integration with Athenahealth, eCW, and NextGen. 97.6% average net collection rate.
             </p>
             <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap' }}>
               <Link href="/contact" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: '#0E7C7B', color: '#FFFFFF', padding: '14px 28px', borderRadius: 8, fontWeight: 600, fontSize: 14, letterSpacing: '0.05em', textTransform: 'uppercase', textDecoration: 'none' }}>
@@ -233,7 +233,7 @@ export default function RcmPage() {
       <section style={{ padding: '64px 24px', background: 'linear-gradient(135deg, #0D1F2D, #1A2B3C)', textAlign: 'center' }}>
         <div style={{ maxWidth: 640, margin: '0 auto' }}>
           <h2 className="font-display" style={{ fontSize: 'clamp(22px,4vw,36px)', fontWeight: 700, color: '#FFFFFF', marginBottom: 16 }}>Start Your Free RCM Assessment</h2>
-          <p style={{ color: 'rgba(255,255,255,0.72)', fontSize: 15, marginBottom: 32, lineHeight: 1.7 }}>We analyze your current billing metrics, identify leakage, and show you a realistic recovery projection — in 48 hours.</p>
+          <p style={{ color: 'rgba(255,255,255,0.72)', fontSize: 15, marginBottom: 32, lineHeight: 1.7 }}>Ready to outsource your OB/GYN revenue cycle? We analyze your current billing metrics, identify leakage, and show you a realistic recovery projection — in 48 hours.</p>
           <div style={{ display: 'flex', gap: 16, justifyContent: 'center', flexWrap: 'wrap' }}>
             <Link href="/contact" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: '#0E7C7B', color: '#FFFFFF', padding: '15px 32px', borderRadius: 8, fontWeight: 700, fontSize: 14, letterSpacing: '0.05em', textTransform: 'uppercase', textDecoration: 'none' }}>
               Free RCM Assessment →
