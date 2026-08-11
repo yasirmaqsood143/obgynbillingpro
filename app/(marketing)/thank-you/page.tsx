@@ -101,16 +101,19 @@ export default function ThankYouPage() {
           <p style={{ color: '#4A5568', fontSize: 16, marginBottom: 32 }}>
             Pick a time that works for you — 30-minute consultation with a CPC-OB specialist.
           </p>
-          {/* Calendly embed — replace with actual embed code */}
+          {/* Google Calendar Appointment Scheduling */}
           <div style={{
-            background: '#FFFFFF', border: '2px dashed #CBD5E0', borderRadius: 16,
-            padding: '64px 32px', color: '#718096', fontSize: 15,
+            background: '#FFFFFF', border: '1px solid #E2E8F0', borderRadius: 16,
+            padding: 12, overflow: 'hidden',
           }}>
-            📅 Calendly booking widget loads here.
-            <br />
-            <span style={{ fontSize: 13, opacity: 0.7 }}>
-              Add your Calendly embed URL in the code to activate.
-            </span>
+            <iframe
+              src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ1Tm0Ba4LjScCYjyJH8NPFbP6VtLGC1cR9cDApVjGxT_cCPQQ-h6FKCjzDNjYZbJ71Xgn0mDkDd?gv=true"
+              title="Book a discovery call with OBGYNBillingPro"
+              style={{ border: 0, display: 'block', width: '100%', borderRadius: 12 }}
+              width="100%"
+              height={600}
+              frameBorder={0}
+            />
           </div>
         </div>
       </section>
