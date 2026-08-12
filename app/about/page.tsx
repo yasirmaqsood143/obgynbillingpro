@@ -177,6 +177,50 @@ const complianceBadges = [
 ];
 
 // ─────────────────────────────────────────────────────────────────────────────
+// STRUCTURED DATA (JSON-LD)
+// ─────────────────────────────────────────────────────────────────────────────
+
+const aboutSchema = {
+  "@context": "https://schema.org",
+  "@type": "AboutPage",
+  name: "About OBGYNBillingPro",
+  url: "https://obgynbillingpro.com/about",
+  description:
+    "OBGYNBillingPro is a medical billing company built exclusively for OB/GYN practices — CPC-OB certified coders specializing in global maternity billing, GYN surgery coding, denial management, and revenue cycle management.",
+  mainEntity: {
+    "@type": "MedicalBusiness",
+    name: "OBGYNBillingPro",
+    description:
+      "Specialized OB/GYN medical billing and revenue cycle management. Exclusively OB/GYN since 2014.",
+    url: "https://obgynbillingpro.com",
+    telephone: process.env.NEXT_PUBLIC_PHONE,
+    email: process.env.NEXT_PUBLIC_EMAIL,
+    foundingDate: "2014",
+    areaServed: "US",
+    medicalSpecialty: "Obstetrics and Gynecology",
+    knowsAbout: [
+      "OB/GYN medical billing",
+      "Global maternity billing",
+      "GYN surgery coding",
+      "Denial management",
+      "Revenue cycle management",
+      "Physician credentialing",
+    ],
+    hasCredential: [
+      "AAPC CPC-OB",
+      "AHIMA",
+      "MGMA",
+      "HIMSS",
+    ],
+    employee: team.map((m) => ({
+      "@type": "Person",
+      name: m.name,
+      jobTitle: m.role,
+    })),
+  },
+};
+
+// ─────────────────────────────────────────────────────────────────────────────
 // STAT COUNTER
 // ─────────────────────────────────────────────────────────────────────────────
 
@@ -202,6 +246,11 @@ export default function AboutPage() {
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutSchema) }}
+      />
+
       {/* ── Scoped styles ── */}
       <style>{`
         /* Responsive breakpoints */
