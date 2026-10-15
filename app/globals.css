@@ -1,138 +1,121 @@
 @import "tailwindcss";
 
-/* ── Font variable fallbacks ─────────────────────────────────────────────────
-   next/font sets these CSS variables on <html>. The fallbacks here ensure
-   styles work during hydration before the font bundle loads.
-────────────────────────────────────────────────────────────────────────────── */
-:root {
-  /* Typography */
-  --font-inter:    "Inter",            system-ui, sans-serif;
-  --font-playfair: "Playfair Display", Georgia,   serif;
-  --font-mono:     "JetBrains Mono",   "Fira Code", monospace;
+@theme {
+  --color-teal: #0e7c7b;
+  --color-teal-dark: #065f5e;
+  --color-teal-light: #e0f4f4;
+  --color-navy: #1a2b3c;
+  --color-navy-alt: #2b2d42;
+  --color-ink: #4a5568;
+  --color-mist: #f7fafc;
+  --color-linen: #e8e5e0;
+  --color-sand: #f6f3ee;
+  --color-terracotta: #e2725b;
+  --color-amber: #d97706;
+  --color-olive: #4a5f3c;
+  --color-line: #e2e8f0;
+  --color-wa: #12804a;
+  --color-wa-dark: #0c6439;
 
-  /* Brand colors — use via style={{color:'var(--teal)'}} or Tailwind [#hex] */
-  --teal:          #0E7C7B;
-  --teal-dark:     #065F5E;
-  --teal-light:    #E0F4F4;
-  --navy:          #1A2B3C;
-  --navy-alt:      #2B2D42;
-  --body-text:     #4A5568;
-  --light-bg:      #F7FAFC;
-  --success:       #276749;
-  --terracotta:    #E2725B;
-  --warning:       #D97706;
-  --accent-blue:   #2B6CB0;
-  --border:        #E2E8F0;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, monospace;
+  --font-display: var(--font-playfair), Georgia, serif;
 }
 
-/* ── Base resets ─────────────────────────────────────────────────────────────
-   Tailwind's preflight handles most resets; these extras are safe to keep.
-────────────────────────────────────────────────────────────────────────────── */
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-  margin:  0;
-  padding: 0;
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body { background: #ffffff; color: var(--color-navy); font-family: var(--font-sans); -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+::selection { background: var(--color-teal-light); color: var(--color-navy); }
+:focus-visible { outline: 3px solid #0e7c7b; outline-offset: 2px; border-radius: 4px; }
+
+@layer components {
+/* ── Buttons: explicit colors on every state so text + icons never disappear ── */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: .55rem;
+  padding: .85rem 1.35rem; border-radius: 8px; border: 2px solid transparent;
+  font-weight: 600; font-size: .875rem; letter-spacing: .04em; text-transform: uppercase;
+  line-height: 1.2; text-decoration: none !important; white-space: nowrap;
+  transition: transform .15s ease, background-color .15s ease, color .15s ease, border-color .15s ease, box-shadow .15s ease;
+}
+.btn:hover { transform: scale(1.02); }
+.btn svg { width: 1.1em; height: 1.1em; flex-shrink: 0; }
+.btn-sm { padding: .55rem .95rem; font-size: .78rem; }
+.btn-lg { padding: 1rem 1.6rem; font-size: .95rem; }
+
+.btn-primary { background-color: #0e7c7b !important; color: #ffffff !important; border-color: #0e7c7b !important; }
+.btn-primary svg { stroke: #ffffff !important; color: #ffffff !important; }
+.btn-primary:hover { background-color: #065f5e !important; color: #ffffff !important; border-color: #065f5e !important; box-shadow: 0 8px 22px -10px rgba(6,95,94,.7); }
+.btn-primary:hover svg { stroke: #ffffff !important; color: #ffffff !important; }
+
+.btn-wa { background-color: #12804a !important; color: #ffffff !important; border-color: #12804a !important; }
+.btn-wa svg { fill: #ffffff !important; stroke: none !important; color: #ffffff !important; }
+.btn-wa:hover { background-color: #0c6439 !important; color: #ffffff !important; border-color: #0c6439 !important; box-shadow: 0 8px 22px -10px rgba(12,100,57,.7); }
+.btn-wa:hover svg { fill: #ffffff !important; color: #ffffff !important; }
+
+.btn-outline { background-color: transparent !important; color: #0e7c7b !important; border-color: #0e7c7b !important; }
+.btn-outline svg { stroke: #0e7c7b !important; color: #0e7c7b !important; }
+.btn-outline:hover { background-color: #0e7c7b !important; color: #ffffff !important; border-color: #0e7c7b !important; }
+.btn-outline:hover svg { stroke: #ffffff !important; color: #ffffff !important; }
+
+.btn-light { background-color: #ffffff !important; color: #065f5e !important; border-color: #ffffff !important; }
+.btn-light svg { stroke: #065f5e !important; color: #065f5e !important; }
+.btn-light:hover { background-color: #e0f4f4 !important; color: #065f5e !important; border-color: #e0f4f4 !important; }
+.btn-light:hover svg { stroke: #065f5e !important; color: #065f5e !important; }
+
+.btn-ghost-light { background-color: transparent !important; color: #ffffff !important; border-color: rgba(255,255,255,.55) !important; }
+.btn-ghost-light svg { stroke: #ffffff !important; color: #ffffff !important; }
+.btn-ghost-light:hover { background-color: rgba(255,255,255,.12) !important; color: #ffffff !important; border-color: #ffffff !important; }
+.btn-ghost-light:hover svg { stroke: #ffffff !important; color: #ffffff !important; }
+
+/* ── Small helpers ─────────────────────────────────────────────────────────── */
+.eyebrow { font-size: .75rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--color-teal); }
+.code-chip { font-family: var(--font-mono); font-size: .8em; background: var(--color-teal-light); color: var(--color-teal-dark); padding: .12em .45em; border-radius: 5px; white-space: nowrap; }
+.grid-bg { background-image: linear-gradient(rgba(14,124,123,.07) 1px, transparent 1px), linear-gradient(90deg, rgba(14,124,123,.07) 1px, transparent 1px); background-size: 32px 32px; }
+
+/* ── Long-form content ─────────────────────────────────────────────────────── */
+.prose { color: #3d4757; font-size: 1.0625rem; line-height: 1.75; }
+.prose > * + * { margin-top: 1.1em; }
+.prose h2 { font-size: clamp(1.45rem, 2.4vw, 1.9rem); line-height: 1.25; font-weight: 700; color: var(--color-navy); letter-spacing: -.015em; margin-top: 2.4em; scroll-margin-top: 110px; }
+.prose h2::before { content: ""; display: block; width: 44px; height: 4px; border-radius: 2px; background: var(--color-teal); margin-bottom: .75rem; }
+.prose h3 { font-size: 1.22rem; line-height: 1.35; font-weight: 700; color: var(--color-navy); margin-top: 1.9em; scroll-margin-top: 110px; }
+.prose h4 { font-size: 1.05rem; font-weight: 700; color: var(--color-navy); margin-top: 1.5em; }
+.prose > :first-child, .prose > :first-child::before { margin-top: 0; }
+.prose a { color: #0e7c7b; font-weight: 600; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+.prose a:hover { color: #065f5e; }
+.prose strong { color: var(--color-navy); font-weight: 700; }
+.prose ul, .prose ol { padding-left: 1.4em; }
+.prose ul { list-style: none; padding-left: 0; }
+.prose ul > li { position: relative; padding-left: 1.6em; }
+.prose ul > li::before { content: ""; position: absolute; left: .3em; top: .72em; width: 7px; height: 7px; border-radius: 2px; background: var(--color-teal); transform: rotate(45deg); }
+.prose ol { list-style: decimal; }
+  .prose ul > li:has(> input[type="checkbox"]) { padding-left: 0; }
+  .prose ul > li:has(> input[type="checkbox"])::before { display: none; }
+  .prose li > input[type="checkbox"] { width: 1rem; height: 1rem; margin-right: .55rem; vertical-align: -2px; accent-color: #0e7c7b; }
+.prose ol > li::marker { color: var(--color-teal); font-weight: 700; }
+.prose li + li { margin-top: .45em; }
+.prose code { font-family: var(--font-mono); font-size: .85em; background: var(--color-teal-light); color: var(--color-teal-dark); padding: .1em .4em; border-radius: 5px; }
+.prose blockquote { border-left: 4px solid var(--color-teal); background: var(--color-mist); padding: 1.1em 1.3em; border-radius: 0 10px 10px 0; color: var(--color-navy); }
+.prose blockquote p + p { margin-top: .6em; }
+.prose hr { border: 0; border-top: 1px solid var(--color-line); margin: 2.5em 0; }
+.prose .table-wrap { overflow-x: auto; border: 1px solid var(--color-line); border-radius: 12px; }
+.prose table { width: 100%; border-collapse: collapse; font-size: .94rem; line-height: 1.5; }
+.prose thead th { background: var(--color-teal-light); color: var(--color-navy); text-align: left; font-weight: 700; padding: .75em 1em; white-space: nowrap; }
+.prose tbody td { padding: .7em 1em; border-top: 1px solid var(--color-line); vertical-align: top; }
+.prose tbody tr:nth-child(even) td { background: #fbfcfd; }
+.prose img { border-radius: 12px; }
+
+/* ── FAQ accordions ────────────────────────────────────────────────────────── */
+.faq summary { list-style: none; cursor: pointer; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq[open] .faq-icon { transform: rotate(45deg); }
+
+/* ── Header dropdown ───────────────────────────────────────────────────────── */
+.nav-drop { visibility: hidden; opacity: 0; transform: translateY(6px); transition: opacity .15s ease, transform .15s ease, visibility .15s; }
+.nav-item:hover .nav-drop, .nav-item:focus-within .nav-drop { visibility: visible; opacity: 1; transform: translateY(0); }
+
 }
 
-html {
-  scroll-behavior: smooth;
-  -webkit-text-size-adjust: 100%;
-}
-
-body {
-  font-family: var(--font-inter);
-  -webkit-font-smoothing:  antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizeLegibility;
-}
-
-/*
-  ⚠  NO global h1–h6 font rule.
-  Use .font-display or style={{ fontFamily: "var(--font-playfair)" }} only
-  where the design explicitly calls for Playfair Display.
-*/
-
-/* ── Utility: opt into Playfair on specific elements ─────────────────────── */
-.font-display {
-  font-family: var(--font-playfair);
-}
-
-/* ── Utility: monospace (CPT/ICD codes, calculator outputs) ─────────────── */
-code, kbd, samp, pre {
-  font-family: var(--font-mono), monospace;
-}
-
-/* ── Smooth transitions for interactive elements ─────────────────────────── */
-a, button {
-  transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
-}
-
-/* ── Remove default list styles ──────────────────────────────────────────── */
-ul, ol {
-  list-style: none;
-}
-
-/* ── Image defaults ──────────────────────────────────────────────────────── */
-img, video {
-  max-width: 100%;
-  height: auto;
-  display: block;
-}
-
-/* ── Header height utility ───────────────────────────────────────────────────
-   Use class="h-18" anywhere you need exactly 72px. Tailwind arbitrary value
-   h-[72px] also works — both are equivalent. Pick one and stay consistent.
-────────────────────────────────────────────────────────────────────────────── */
-.h-18 {
-  height: 4.5rem; /* 72px */
-}
-
-/* ── Header: background transition ───────────────────────────────────────────
-   FIX: Removed `will-change: background-color, box-shadow` from the header
-   element. That property promotes the element to its own compositor layer,
-   which causes child dropdowns (position: absolute) to be clipped or rendered
-   below other stacking contexts in Chrome/Safari. The JS-driven class swap +
-   Tailwind transition-all handles the scroll effect without will-change.
-────────────────────────────────────────────────────────────────────────────── */
-
-/* ── Header: desktop dropdown animation ──────────────────────────────────────
-   FIX: Scoped to [data-dropdown] instead of the broad `header nav .absolute`
-   selector. The old selector matched ANY .absolute child inside nav — including
-   tooltip wrappers and badge elements — causing stray flicker. Add
-   data-dropdown="" to the dropdown <div> in Header.tsx (already included below).
-────────────────────────────────────────────────────────────────────────────── */
-[data-dropdown] {
-  animation: dropdownFadeIn 0.18s ease forwards;
-}
-
-@keyframes dropdownFadeIn {
-  from { opacity: 0; transform: translateY(-6px); }
-  to   { opacity: 1; transform: translateY(0);    }
-}
-
-/* ── Header: mobile menu slide-down ──────────────────────────────────────────
-   FIX: Old selector targeted `.bg-white` but the mobile panel uses bg-[#0A1929]
-   (dark navy). Scoped to [data-mobile-menu] attribute instead — reliable
-   regardless of background color class. Add data-mobile-menu="" to the mobile
-   menu <div> in Header.tsx (already included in the updated component).
-────────────────────────────────────────────────────────────────────────────── */
-[data-mobile-menu] {
-  animation: mobileMenuSlide 0.22s ease forwards;
-}
-
-@keyframes mobileMenuSlide {
-  from { opacity: 0; transform: translateY(-8px); }
-  to   { opacity: 1; transform: translateY(0);    }
-}
-
-/* ── Active nav link ──────────────────────────────────────────────────────────
-   Apply via usePathname() in Header.tsx:
-     className={pathname === href ? "nav-link-active" : ""}
-────────────────────────────────────────────────────────────────────────────── */
-.nav-link-active {
-  color:            #0E7C7B !important;
-  background-color: #E0F4F4;
-  border-radius:    6px;
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .btn, .nav-drop { transition: none; }
+  .btn:hover { transform: none; }
 }

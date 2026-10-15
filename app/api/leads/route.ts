@@ -98,7 +98,7 @@ export async function POST(req: NextRequest) {
         subject: 'Your Free OB/GYN Revenue Audit — What Happens Next',
         html: `
           <h2>Hi ${lead.name},</h2>
-          <p>Thank you for reaching out to OBGYNBillingPro. A member of our CPC-OB certified team will contact you within one business day to schedule your free revenue audit.</p>
+          <p>Thank you for reaching out to OBGYNBillingPro. A member of our OB/GYN billing team will contact you within one business day to schedule your free revenue audit.</p>
           <p>In the meantime, you can <a href="https://obgynbillingpro.com/calculator">run your Revenue Leakage Calculator</a> to see a real-time estimate of what your practice may be losing.</p>
           <p>— The OBGYNBillingPro Team</p>
         `.trim(),

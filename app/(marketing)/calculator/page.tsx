@@ -1,96 +1,52 @@
-// app/(marketing)/calculator/page.tsx
-// Server component: exports metadata + JSON-LD, renders client calculator.
+import type { Metadata } from "next";
+import { abs, waLink, SITE } from "@/lib/site";
+import { Container, Breadcrumbs, Faqs, CtaBand, JsonLd } from "../../components/ui";
+import MdBody from "../../components/MdBody";
+import CalculatorClient from "./CalculatorClient";
 
-import type { Metadata } from 'next';
-import CalculatorClient from './CalculatorClient';
-
-export async function generateMetadata(): Promise<Metadata> {
-  return {
-    title: 'OB/GYN Revenue Leakage Calculator | Free Tool',
-    description:
-      'Calculate exactly how much revenue your OB/GYN practice is losing to denials, missed modifiers, and billing inefficiencies. Free 3-step calculator.',
-    alternates: { canonical: 'https://obgynbillingpro.com/calculator' },
-    openGraph: {
-      title: 'Free OB/GYN Revenue Leakage Calculator | OBGYNBillingPro',
-      description: 'See your net collection rate, annual revenue loss, and recovery opportunity in 3 steps.',
-      url: 'https://obgynbillingpro.com/calculator',
-      siteName: 'OBGYNBillingPro',
-      type: 'website',
-      images: [{ url: '/og-image.png', width: 1200, height: 630 }],
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title: 'Free OB/GYN Revenue Leakage Calculator',
-      description: '3-step calculator showing how much your OB/GYN practice is leaving on the table.',
-    },
-  };
-}
-
-const schema = {
-  '@context': 'https://schema.org',
-  '@type': 'SoftwareApplication',
-  name: 'OB/GYN Revenue Leakage Calculator',
-  applicationCategory: 'BusinessApplication',
-  description: 'Free 3-step calculator that quantifies revenue leakage in OB/GYN practices.',
-  url: 'https://obgynbillingpro.com/calculator',
-  offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
-  operatingSystem: 'Web Browser',
+export const metadata: Metadata = {
+  title: { absolute: "OB/GYN Revenue Leakage Calculator | Free Billing Calculator" },
+  description: "Free OB/GYN billing calculator: estimate your net collection rate, uncollected revenue and the annual cost of claim denials in under two minutes. No email required.",
+  alternates: { canonical: abs("/calculator") },
 };
 
+const FAQS = [
+  { q: "Do I need to enter my email to see results?", a: "No. Results appear instantly as you type. Nothing you enter is stored or sent anywhere." },
+  { q: "What is a good net collection rate for an OB/GYN practice?", a: "Benchmarks vary by source, but well-run practices typically collect the large majority of their contractually collectible revenue. Rather than comparing to a single number, track your own rolling three- to six-month NCR and look for the reasons behind any gap." },
+  { q: "Why doesn't the calculator include global maternity or coding errors?", a: "Those gaps usually don't appear in summary numbers because the charges were never created. Finding them requires reviewing claims and documentation — which is what our free audit does." },
+  { q: "Is this estimate a guarantee?", a: "No. It's a rough, informational estimate based on your inputs and the assumptions shown. It isn't a guarantee of any revenue recovery." },
+  { q: "Where do I find gross charges and adjustments?", a: "Most practice management systems include them in a month-end or financial summary report. Your denial rate may come from the clearinghouse or a denial report." },
+  { q: "Why use net collection rate instead of gross collection rate?", a: "Gross collection rate mostly reflects how high your fee schedule is. Net collection rate removes contractual adjustments, so it shows how much of the revenue you're actually entitled to you collect." },
+];
+
 export default function CalculatorPage() {
+  const waBase = waLink("").split("?")[0];
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+      <section className="border-b border-line bg-white">
+        <Container className="py-12">
+          <Breadcrumbs items={[{ name: "Resources", href: "/resources" }, { name: "Revenue Calculator", href: "/calculator" }]} />
+          <p className="eyebrow mt-6">Free tool · no email required</p>
+          <h1 className="mt-3 max-w-3xl text-4xl font-bold tracking-tight text-navy sm:text-5xl">OB/GYN revenue leakage calculator</h1>
+          <p className="mt-4 max-w-2xl text-lg leading-relaxed text-ink">Enter four numbers from your monthly practice management report to estimate your net collection rate, uncollected revenue and the annual cost of claim denials.</p>
+          <div className="mt-10"><CalculatorClient waBase={waBase} /></div>
+        </Container>
+      </section>
+      <Container className="max-w-4xl py-16"><MdBody slug="calculator" message="Hi! I tried your revenue calculator and would like a free audit." /></Container>
+      <section className="border-t border-line py-16"><Container className="max-w-4xl"><Faqs faqs={FAQS} title="Calculator FAQs" /></Container></section>
+      <CtaBand />
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "SoftwareApplication",
+          name: "OB/GYN Revenue Leakage Calculator",
+          applicationCategory: "BusinessApplication",
+          operatingSystem: "Web",
+          url: abs("/calculator"),
+          offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+          publisher: { "@id": `${SITE.url}/#organization` },
+        }}
       />
-
-      {/* Hero */}
-      <section style={{ background: 'linear-gradient(135deg, #0D1F2D 0%, #0E2A3A 100%)', padding: '72px 24px' }}>
-        <div style={{ maxWidth: 800, margin: '0 auto', textAlign: 'center' }}>
-          <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: 'rgba(14,124,123,0.15)', border: '1px solid rgba(14,124,123,0.4)', borderRadius: 100, padding: '6px 18px', marginBottom: 24 }}>
-            <span style={{ color: '#0E7C7B', fontSize: 12, fontWeight: 600, letterSpacing: '0.06em', textTransform: 'uppercase' }}>Free Tool</span>
-          </div>
-          <h1 className="font-display" style={{ fontSize: 'clamp(28px,5vw,48px)', fontWeight: 700, color: '#FFFFFF', lineHeight: 1.2, marginBottom: 20 }}>
-            OB/GYN Revenue Leakage Calculator
-          </h1>
-          <p style={{ color: 'rgba(255,255,255,0.75)', fontSize: 17, lineHeight: 1.75, maxWidth: 560, margin: '0 auto' }}>
-            Answer 8 questions about your practice and see — in real time — how much revenue
-            you&apos;re leaving on the table every year.
-          </p>
-        </div>
-      </section>
-
-      {/* Compliance bar */}
-      <section style={{ padding: '14px 24px', background: '#F7FAFC', borderBottom: '1px solid #E2E8F0' }}>
-        <div style={{ maxWidth: 1100, margin: '0 auto', display: 'flex', flexWrap: 'wrap', gap: 20, justifyContent: 'center' }}>
-          {['HIPAA Compliant', 'BAA Available', 'SOC 2 Type II', 'AAPC', 'AHIMA', 'MGMA', 'HIMSS'].map((b) => (
-            <span key={b} style={{ fontSize: 12, fontWeight: 600, color: '#2B2D42', opacity: 0.7 }}>{b}</span>
-          ))}
-        </div>
-      </section>
-
-      {/* Calculator */}
-      <section style={{ padding: '64px 0 80px', background: '#F7FAFC' }}>
-        <CalculatorClient />
-      </section>
-
-      {/* Stat strip */}
-      <section style={{ padding: '48px 24px', background: 'linear-gradient(135deg, #0E7C7B, #065F5E)' }}>
-        <div style={{ maxWidth: 960, margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: 24 }}>
-          {[
-            { v: '98.2%', l: 'First-Pass Rate' },
-            { v: '1.4%',  l: 'Denial Rate Achieved' },
-            { v: '$4.2M+',l: 'Revenue Recovered' },
-            { v: '200+',  l: 'Practices Served' },
-          ].map((s) => (
-            <div key={s.l} style={{ textAlign: 'center' }}>
-              <div style={{ fontSize: 'clamp(26px,4vw,40px)', fontWeight: 800, color: '#FFFFFF', marginBottom: 6 }}>{s.v}</div>
-              <div style={{ color: 'rgba(255,255,255,0.78)', fontSize: 14 }}>{s.l}</div>
-            </div>
-          ))}
-        </div>
-      </section>
     </>
   );
 }

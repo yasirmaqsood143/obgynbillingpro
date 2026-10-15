@@ -1,3 +1,30 @@
+# ⚠️ CURRENT SITE RULES — October 2026 redesign (these OVERRIDE anything older below)
+
+## Content & claims
+- NEVER add fake or unverifiable stats (no "$4.2M recovered", "200+ practices", "98.2% first-pass", denial-rate promises).
+- NEVER claim certifications/memberships we don't hold (no AAPC, AHIMA, CPC-OB, MGMA, HIMSS, SOC 2 badges).
+- NEVER mention AI / agentic / automated features. Work is done by experienced billing people.
+- No invented testimonials or named "clients". Case studies on /results are labeled illustrative composites.
+- Allowed trust signals: "8+ years of experience", BAA signed before PHI access, works inside client EHR, no setup fees / no long-term lock-in, free audit.
+- Focus is OB/GYN; other specialties (cardiology, IM, FP…) live on /multi-specialty-billing only.
+- Every content page and blog post: 1,500+ words, accurate codes, cite AMA/CMS for 2027 changes.
+
+## Contact
+- Do NOT show any phone number anywhere. WhatsApp is the primary CTA: use `waLink()` / `<WaButton>` from `lib/site.ts` + `app/components/ui.tsx` (number from NEXT_PUBLIC_WHATSAPP_NUMBER).
+- Free audit = WhatsApp message, no forms. Email via NEXT_PUBLIC_EMAIL only.
+- Never ask visitors to send PHI over WhatsApp/email.
+
+## Architecture (actual)
+- Next.js 16 App Router, Tailwind v4 (`app/globals.css` @theme tokens), no src/ dir.
+- Content is Markdown in `content/` (services, resources, pages, blog, legal) rendered by `lib/content.ts` (marked + gray-matter). `<!-- cta -->` in markdown inserts an inline WhatsApp CTA.
+- Service pages: `content/services/<slug>.md` + thin route `app/(marketing)/<slug>/page.tsx` using `MarkdownPage`.
+- Blog: `content/blog/<slug>.md`. Posts with a future `date:` stay hidden until that day (weekly drip, ISR revalidate 1h). Links to unpublished posts render as plain text automatically.
+- Images: Unsplash via next/image, registry in `lib/images.ts` (all IDs verified).
+- Old thin posts were consolidated with 301s in `next.config.ts` — keep those redirects.
+- Local build without internet: `NEXT_FONT_GOOGLE_MOCKED_RESPONSES=<mock.js> next build --webpack`.
+
+---
+
 # OBGYNBillingPro — Claude Code Project Context
 # obgynbillingpro.com | Next.js 14+ | April 2026
 # Prepared by Yasir Maqsood | ProBuild Sites | probuildsites.com

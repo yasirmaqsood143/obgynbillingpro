@@ -1,129 +1,77 @@
-// app/(marketing)/contact/page.tsx
-// Server component — exports metadata + JSON-LD + Google Calendar scheduler.
+import type { Metadata } from "next";
+import { Mail, Clock, ShieldCheck } from "lucide-react";
+import { abs, SITE } from "@/lib/site";
+import { Container, PageHero, Faqs, CtaBand, WaButton, WhatsAppIcon, JsonLd } from "../../components/ui";
+import MdBody from "../../components/MdBody";
 
-import type { Metadata } from 'next';
-
-export async function generateMetadata(): Promise<Metadata> {
-  return {
-    title: 'Contact Us | Free OB/GYN Revenue Audit',
-    description:
-      'Contact OBGYNBillingPro for a free OB/GYN revenue audit. CPC-OB certified specialists. HIPAA compliant. We respond within one business day.',
-    alternates: { canonical: 'https://obgynbillingpro.com/contact' },
-    openGraph: {
-      title: 'Get Your Free OB/GYN Revenue Audit | OBGYNBillingPro',
-      description: 'Reach out to schedule a free revenue audit with our CPC-OB certified billing team.',
-      url: 'https://obgynbillingpro.com/contact',
-      siteName: 'OBGYNBillingPro',
-      type: 'website',
-      images: [{ url: '/og-image.png', width: 1200, height: 630 }],
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title: 'Free OB/GYN Revenue Audit | OBGYNBillingPro',
-      description: 'Schedule your free revenue audit — CPC-OB certified billing specialists.',
-    },
-  };
-}
-
-const schema = {
-  '@context': 'https://schema.org',
-  '@type': 'LocalBusiness',
-  name: 'OBGYNBillingPro',
-  description: 'Specialized OB/GYN medical billing and revenue cycle management.',
-  url: 'https://obgynbillingpro.com',
-  telephone: process.env.NEXT_PUBLIC_PHONE,
-  email: process.env.NEXT_PUBLIC_EMAIL,
-  areaServed: 'US',
-  knowsAbout: ['OB/GYN billing', 'Medical billing', 'Revenue cycle management', 'HIPAA compliance'],
-  hasCredential: ['AAPC CPC-OB', 'AHIMA', 'MGMA'],
+export const metadata: Metadata = {
+  title: { absolute: "Contact OBGYNBillingPro | Free OB/GYN Billing Audit on WhatsApp" },
+  description: "Contact OBGYNBillingPro on WhatsApp for a free OB/GYN billing audit — no forms required. Ask a billing question, schedule a call or request a quote.",
+  alternates: { canonical: abs("/contact") },
 };
+
+const FAQS = [
+  { q: "Do I need to fill out a form for the free audit?", a: "No. Just send us a WhatsApp message. We'll ask a few questions and arrange secure access to a sample of your claims after signing a BAA." },
+  { q: "Can I send patient information on WhatsApp?", a: "Please don't. WhatsApp is for scheduling and general questions. Patient information is only reviewed through secure access to your systems after a Business Associate Agreement is signed." },
+  { q: "How quickly will you respond?", a: "We respond to WhatsApp messages promptly during business hours." },
+  { q: "Is there any obligation after the audit?", a: "None. The findings are yours to keep and use however you like." },
+  { q: "Do you work with practices outside OB/GYN?", a: "Yes. OB/GYN is our focus, but we also support cardiology, internal medicine, family practice and other specialties. Message us and we'll tell you honestly whether we're a good fit." },
+  { q: "Can we just ask a coding question without signing up?", a: "Absolutely. Quick coding and billing questions are free \u2014 just leave patient information out of the message." },
+  { q: "What happens after the audit?", a: "We walk you through the findings. If you'd like our help, we'll recommend a service and send a written proposal. If not, you keep the findings." },
+];
+
+const CALENDAR = "https://calendar.google.com/calendar/appointments/schedules/AcZssZ1Tm0Ba4LjScCYjyJH8NPFbP6VtLGC1cR9cDApVjGxT_cCPQQ-h6FKCjzDNjYZbJ71Xgn0mDkDd?gv=true";
 
 export default function ContactPage() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+      <PageHero
+        eyebrow="Contact"
+        title="Talk to an OB/GYN billing specialist"
+        lead="No forms, no phone tag. Send us a WhatsApp message to start your free billing audit, ask a coding question or schedule a call."
+        image="officeConsult"
+        crumbs={[{ name: "Contact", href: "/contact" }]}
+        secondary={{ href: "#schedule", label: "Schedule a call" }}
       />
 
-      {/* Hero */}
-      <section style={{
-        background: 'linear-gradient(135deg, #0D1F2D 0%, #0E2A3A 100%)',
-        padding: '72px 24px 64px',
-      }}>
-        <div style={{ maxWidth: 800, margin: '0 auto', textAlign: 'center' }}>
-          <div style={{
-            display: 'inline-flex', alignItems: 'center', gap: 8,
-            background: 'rgba(14,124,123,0.15)', border: '1px solid rgba(14,124,123,0.4)',
-            borderRadius: 100, padding: '6px 18px', marginBottom: 24,
-          }}>
-            <span style={{ color: '#0E7C7B', fontSize: 12, fontWeight: 600, letterSpacing: '0.06em', textTransform: 'uppercase' }}>
-              Free, No-Obligation Audit
-            </span>
+      <section className="py-14">
+        <Container className="grid gap-6 md:grid-cols-3">
+          <div className="rounded-2xl border-2 border-wa/30 bg-[#f1faf4] p-7">
+            <WhatsAppIcon className="h-9 w-9 text-wa" />
+            <h2 className="mt-4 text-xl font-bold text-navy">WhatsApp (fastest)</h2>
+            <p className="mt-2 text-[15px] leading-relaxed text-ink">Free audits, quick questions, quotes and scheduling.</p>
+            <WaButton size="btn-sm" label="Open WhatsApp" className="mt-5" />
           </div>
-          <h1 className="font-display" style={{
-            fontSize: 'clamp(28px,5vw,48px)', fontWeight: 700,
-            color: '#FFFFFF', lineHeight: 1.2, marginBottom: 20,
-          }}>
-            Get Your Free OB/GYN Revenue Audit
-          </h1>
-          <p style={{ color: 'rgba(255,255,255,0.75)', fontSize: 18, lineHeight: 1.75, maxWidth: 600, margin: '0 auto' }}>
-            Tell us about your practice and we&apos;ll analyze your billing performance,
-            identify revenue leakage, and show you exactly how much we can recover.
-          </p>
-        </div>
-      </section>
-
-      {/* Compliance bar */}
-      <section style={{ padding: '14px 24px', background: '#F7FAFC', borderBottom: '1px solid #E2E8F0' }}>
-        <div style={{ maxWidth: 1100, margin: '0 auto', display: 'flex', flexWrap: 'wrap', gap: 20, justifyContent: 'center' }}>
-          {['HIPAA Compliant', 'BAA Available', 'SOC 2 Type II', 'AAPC', 'AHIMA', 'MGMA', 'HIMSS'].map((b) => (
-            <span key={b} style={{ fontSize: 12, fontWeight: 600, color: '#2B2D42', opacity: 0.7 }}>{b}</span>
-          ))}
-        </div>
-      </section>
-
-      {/* Google Calendar Appointment Scheduling */}
-      <section style={{ padding: '72px 24px', background: '#FFFFFF' }}>
-        <div style={{ maxWidth: 800, margin: '0 auto', textAlign: 'center' }}>
-          <h2 style={{ fontSize: 'clamp(22px,3.5vw,32px)', fontWeight: 700, color: '#1A2B3C', marginBottom: 12 }}>
-            Book Your Free Revenue Audit
-          </h2>
-          <p style={{ color: '#4A5568', fontSize: 16, marginBottom: 32 }}>
-            Pick a time that works for you — a 30-minute consultation with a CPC-OB certified specialist. No obligation.
-          </p>
-          <div style={{
-            background: '#FFFFFF', border: '1px solid #E2E8F0', borderRadius: 16,
-            padding: 12, overflow: 'hidden',
-          }}>
-            <iframe
-              src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ1Tm0Ba4LjScCYjyJH8NPFbP6VtLGC1cR9cDApVjGxT_cCPQQ-h6FKCjzDNjYZbJ71Xgn0mDkDd?gv=true"
-              title="Book a free OB/GYN revenue audit with OBGYNBillingPro"
-              style={{ border: 0, display: 'block', width: '100%', borderRadius: 12 }}
-              width="100%"
-              height={600}
-              frameBorder={0}
-            />
+          <div className="rounded-2xl border border-line p-7">
+            <Mail className="h-9 w-9 text-teal" />
+            <h2 className="mt-4 text-xl font-bold text-navy">Email</h2>
+            <p className="mt-2 text-[15px] leading-relaxed text-ink">For documents without patient information — contracts, fee schedules, general questions.</p>
+            <a href={`mailto:${SITE.email}`} className="mt-5 inline-block break-all font-semibold text-teal hover:underline">{SITE.email}</a>
           </div>
-        </div>
+          <div className="rounded-2xl border border-line p-7">
+            <ShieldCheck className="h-9 w-9 text-teal" />
+            <h2 className="mt-4 text-xl font-bold text-navy">Privacy first</h2>
+            <p className="mt-2 text-[15px] leading-relaxed text-ink">Please don&apos;t send patient information by WhatsApp or email. We review records only through secure access, under a signed BAA.</p>
+            <p className="mt-5 flex items-center gap-2 text-sm text-ink"><Clock className="h-4 w-4" /> Prompt replies during business hours</p>
+          </div>
+        </Container>
       </section>
 
-      {/* Stat strip */}
-      <section style={{ padding: '48px 24px', background: 'linear-gradient(135deg, #0E7C7B, #065F5E)' }}>
-        <div style={{ maxWidth: 1000, margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: 24 }}>
-          {[
-            { v: '98.2%', l: 'First-Pass Rate' },
-            { v: '200+',  l: 'Practices Served' },
-            { v: '$4.2M+',l: 'Revenue Recovered' },
-            { v: '< 1 Day',l: 'Response Time' },
-          ].map((s) => (
-            <div key={s.l} style={{ textAlign: 'center' }}>
-              <div style={{ fontSize: 'clamp(28px,4vw,40px)', fontWeight: 800, color: '#FFFFFF', marginBottom: 6 }}>{s.v}</div>
-              <div style={{ color: 'rgba(255,255,255,0.78)', fontSize: 14 }}>{s.l}</div>
-            </div>
-          ))}
-        </div>
+      <Container className="max-w-4xl pb-6"><MdBody slug="contact" /></Container>
+
+      <section id="schedule" className="scroll-mt-24 bg-mist py-16">
+        <Container className="max-w-4xl">
+          <h2 className="text-2xl font-bold text-navy sm:text-3xl">Prefer to schedule a call?</h2>
+          <p className="mt-2 text-ink">Pick a time that works for you. It&apos;s optional — WhatsApp is usually faster.</p>
+          <div className="mt-6 overflow-hidden rounded-2xl border border-line bg-white">
+            <iframe src={CALENDAR} title="Schedule a call with OBGYNBillingPro" className="h-[640px] w-full" loading="lazy" />
+          </div>
+        </Container>
       </section>
+
+      <section className="py-16"><Container className="max-w-4xl"><Faqs faqs={FAQS} title="Contact FAQs" /></Container></section>
+      <CtaBand />
+      <JsonLd data={{ "@context": "https://schema.org", "@type": "ContactPage", name: "Contact OBGYNBillingPro", url: abs("/contact") }} />
     </>
   );
 }
