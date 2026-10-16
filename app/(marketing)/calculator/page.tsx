@@ -27,7 +27,7 @@ export default function CalculatorPage() {
         <Container className="py-12">
           <Breadcrumbs items={[{ name: "Resources", href: "/resources" }, { name: "Revenue Calculator", href: "/calculator" }]} />
           <p className="eyebrow mt-6">Free tool · no email required</p>
-          <h1 className="mt-3 max-w-3xl text-4xl font-bold tracking-tight text-navy sm:text-5xl">OB/GYN revenue leakage calculator</h1>
+          <h1 className="mt-3 max-w-3xl text-[2rem] font-bold leading-[1.15] tracking-tight text-navy sm:text-5xl">OB/GYN revenue leakage calculator</h1>
           <p className="mt-4 max-w-2xl text-lg leading-relaxed text-ink">Enter four numbers from your monthly practice management report to estimate your net collection rate, uncollected revenue and the annual cost of claim denials.</p>
           <div className="mt-10"><CalculatorClient waBase={waBase} /></div>
         </Container>

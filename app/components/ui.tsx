@@ -19,7 +19,7 @@ export function SectionHeading({ eyebrow, title, lead, center = false, light = f
   return (
     <div className={`max-w-3xl ${center ? "mx-auto text-center" : ""}`}>
       {eyebrow && <p className={`eyebrow ${light ? "!text-teal-light" : ""}`}>{eyebrow}</p>}
-      <h2 className={`mt-3 text-3xl font-bold tracking-tight sm:text-4xl ${light ? "text-white" : "text-navy"}`}>{title}</h2>
+      <h2 className={`mt-3 text-[1.75rem] font-bold leading-[1.2] tracking-tight sm:text-4xl sm:leading-tight ${light ? "text-white" : "text-navy"}`}>{title}</h2>
       {lead && <p className={`mt-4 text-lg leading-relaxed ${light ? "text-white/80" : "text-ink"}`}>{lead}</p>}
     </div>
   );
@@ -52,7 +52,7 @@ export function CtaBand({ title = "Find out where your practice is losing revenu
         <div className="grid items-center gap-8 lg:grid-cols-[1.4fr_1fr]">
           <div>
             <p className="eyebrow !text-teal-light">Free OB/GYN billing audit</p>
-            <h2 className="mt-3 text-3xl font-bold tracking-tight text-white sm:text-4xl">{title}</h2>
+            <h2 className="mt-3 text-[1.75rem] font-bold leading-[1.2] tracking-tight text-white sm:text-4xl sm:leading-tight">{title}</h2>
             <p className="mt-4 max-w-2xl text-lg leading-relaxed text-white/85">{text}</p>
           </div>
           <div className="flex flex-col gap-3 sm:flex-row lg:flex-col lg:items-end">
@@ -88,14 +88,14 @@ export function Breadcrumbs({ items, light = false }: { items: { name: string; h
   const all = [{ name: "Home", href: "/" }, ...items];
   return (
     <>
-      <nav aria-label="Breadcrumb" className={`flex flex-wrap items-center gap-1 text-sm ${light ? "text-white/70" : "text-ink"}`}>
+      <nav aria-label="Breadcrumb" className={`flex min-w-0 flex-wrap items-center gap-1 text-sm ${light ? "text-white/70" : "text-ink"}`}>
         {all.map((c, i) => (
-          <span key={c.href} className="flex items-center gap-1">
+          <span key={c.href} className="flex min-w-0 items-center gap-1">
             {i > 0 && <ChevronRight className="h-3.5 w-3.5 opacity-60" aria-hidden="true" />}
             {i < all.length - 1 ? (
               <Link href={c.href} className={`hover:underline ${light ? "hover:text-white" : "hover:text-teal"}`}>{c.name}</Link>
             ) : (
-              <span aria-current="page" className={light ? "text-white" : "text-navy"}>{c.name}</span>
+              <span aria-current="page" className={`max-w-[60vw] truncate sm:max-w-none ${light ? "text-white" : "text-navy"}`}>{c.name}</span>
             )}
           </span>
         ))}
@@ -221,9 +221,9 @@ export function PageHero({ eyebrow, title, lead, image, crumbs, waMessage, secon
         <div>
           <Breadcrumbs items={crumbs} light />
           {eyebrow && <p className="eyebrow mt-6 !text-teal-light">{eyebrow}</p>}
-          <h1 className="mt-3 text-4xl font-bold leading-[1.1] tracking-tight text-white sm:text-5xl">{title}</h1>
+          <h1 className="mt-3 text-[2rem] font-bold leading-[1.15] tracking-tight text-white sm:text-5xl sm:leading-[1.1]">{title}</h1>
           <p className="mt-5 max-w-2xl text-lg leading-relaxed text-white/80">{lead}</p>
-          <div className="mt-8 flex flex-wrap gap-3">
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
             <WaButton message={waMessage} />
             <Link href={secondary?.href ?? "/calculator"} className="btn btn-ghost-light">
               {secondary?.label ?? "Revenue Calculator"} <ArrowRight strokeWidth={2.25} />

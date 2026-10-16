@@ -16,7 +16,7 @@ export default function LegalPage({ slug }: { slug: string }) {
   return (
     <Container className="max-w-3xl py-14">
       <Breadcrumbs items={[{ name: doc.data.title, href: `/${slug}` }]} />
-      <h1 className="mt-6 text-4xl font-bold tracking-tight text-navy">{doc.data.title}</h1>
+      <h1 className="mt-6 text-[2rem] font-bold leading-[1.15] tracking-tight text-navy sm:text-4xl">{doc.data.title}</h1>
       <div className="mt-8"><Prose html={doc.rendered.chunks.join("")} /></div>
     </Container>
   );

@@ -77,13 +77,13 @@ export default function Home() {
             <p className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-teal-light">
               <span className="h-1.5 w-1.5 rounded-full bg-terracotta" /> OB/GYN billing specialists · 8+ years
             </p>
-            <h1 className="mt-6 text-4xl font-bold leading-[1.08] tracking-tight text-white sm:text-5xl lg:text-[3.4rem]">
-              OB/GYN medical billing services that get you paid for <span className="font-display italic text-teal-light">every</span> part of the care you give.
+            <h1 className="mt-6 text-[2.05rem] font-bold leading-[1.15] tracking-tight text-white sm:text-5xl sm:leading-[1.08] lg:text-[3.4rem]">
+              OB/GYN medical billing services that get you paid for <span className="text-teal-light">every</span> part of the care you give.
             </h1>
             <p className="mt-6 max-w-xl text-lg leading-relaxed text-white/80">
               Global maternity packages, gynecologic surgery, denials, credentialing and the 2027 maternity code transition — handled by a billing team that works with OB/GYN practices every day.
             </p>
-            <div className="mt-8 flex flex-wrap gap-3">
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
               <WaButton size="btn-lg" />
               <Link href="/calculator" className="btn btn-ghost-light btn-lg">
                 Estimate Revenue Leakage <ArrowRight strokeWidth={2.25} />
@@ -211,7 +211,7 @@ export default function Home() {
         <Container className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_340px]">
           <div className="min-w-0">
             <p className="eyebrow">A guide for practice owners</p>
-            <h2 className="mt-3 text-3xl font-bold tracking-tight text-navy sm:text-4xl">Choosing OB/GYN medical billing services</h2>
+            <h2 className="mt-3 text-[1.75rem] font-bold leading-[1.2] tracking-tight text-navy sm:text-4xl">Choosing OB/GYN medical billing services</h2>
             <div className="mt-10">{home && <Prose html={home.rendered.chunks.join("")} />}</div>
           </div>
           <aside className="space-y-6 lg:sticky lg:top-28 lg:self-start">

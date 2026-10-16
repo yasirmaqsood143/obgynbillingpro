@@ -23,7 +23,7 @@ export default function BlogPage() {
         <Container className="py-12">
           <Breadcrumbs items={[{ name: "Blog", href: "/blog" }]} />
           <p className="eyebrow mt-6">OB/GYN billing blog</p>
-          <h1 className="mt-3 max-w-3xl text-4xl font-bold tracking-tight text-navy sm:text-5xl">OB/GYN billing & coding guides</h1>
+          <h1 className="mt-3 max-w-3xl text-[2rem] font-bold leading-[1.15] tracking-tight text-navy sm:text-5xl">OB/GYN billing & coding guides</h1>
           <p className="mt-4 max-w-3xl text-lg leading-relaxed text-ink">
             Practical, plain-English articles on OB/GYN CPT and ICD-10 coding, global maternity billing, claim denials, telehealth, credentialing and the 2027 maternity code transition. A new article is published every week.
           </p>

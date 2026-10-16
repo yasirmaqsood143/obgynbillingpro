@@ -59,7 +59,7 @@ export default async function PostPage({ params }: Props) {
         <Container className="max-w-5xl pb-10 pt-10">
           <Breadcrumbs items={[{ name: "Blog", href: "/blog" }, { name: d.title, href: `/blog/${slug}` }]} />
           <p className="eyebrow mt-8">{d.category}</p>
-          <h1 className="mt-3 text-3xl font-bold leading-tight tracking-tight text-navy sm:text-[2.6rem]">{d.title}</h1>
+          <h1 className="mt-3 text-[1.75rem] font-bold leading-[1.2] tracking-tight text-navy sm:text-[2.6rem] sm:leading-tight">{d.title}</h1>
           <p className="mt-4 max-w-3xl text-lg leading-relaxed text-ink">{d.description}</p>
           <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-ink">
             <span className="font-semibold text-navy">By the OBGYNBillingPro billing team</span>

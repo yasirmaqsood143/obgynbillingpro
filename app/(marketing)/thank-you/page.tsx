@@ -10,7 +10,7 @@ export default function ThankYouPage() {
   return (
     <Container className="max-w-4xl py-16">
       <CircleCheck className="h-12 w-12 text-olive" />
-      <h1 className="mt-4 text-4xl font-bold tracking-tight text-navy">Thank you — we&apos;ll be in touch shortly.</h1>
+      <h1 className="mt-4 text-[2rem] font-bold leading-[1.15] tracking-tight text-navy sm:text-4xl">Thank you — we&apos;ll be in touch shortly.</h1>
       <p className="mt-4 text-lg leading-relaxed text-ink">The fastest way to start your free OB/GYN billing audit is a WhatsApp message. You can also book a call below.</p>
       <div className="mt-8 flex flex-wrap gap-3">
         <WaButton />
