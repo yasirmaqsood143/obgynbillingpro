@@ -20,10 +20,26 @@ const nextConfig: NextConfig = {
     "/**/*": ["./content/**/*"],
   },
   async headers() {
-    return [{ source: "/:path*", headers: securityHeaders }];
+    return [
+      { source: "/:path*", headers: securityHeaders },
+      // Icons must stay crawlable (Google shows the site icon in results) but should never be
+      // indexed as standalone URLs — e.g. the hashed /favicon.ico?favicon.xxxx.ico variants in GSC.
+      { source: "/favicon.ico", headers: [{ key: "X-Robots-Tag", value: "noindex" }] },
+      { source: "/:file(.+\\.ico)", headers: [{ key: "X-Robots-Tag", value: "noindex" }] },
+      { source: "/icon.svg", headers: [{ key: "X-Robots-Tag", value: "noindex" }] },
+    ];
   },
   async redirects() {
     return [
+      // Canonical host: www → apex in one permanent hop, on every path (query strings are preserved).
+      // Also set www.obgynbillingpro.com to "Redirect to obgynbillingpro.com (308)" in Vercel → Domains
+      // so the redirect happens at the edge before the app is reached.
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "www.obgynbillingpro.com" }],
+        destination: "https://obgynbillingpro.com/:path*",
+        permanent: true,
+      },
       { source: "/services/:slug", destination: "/:slug", permanent: true },
       { source: "/areas", destination: "/areas-we-serve", permanent: true },
       { source: "/case-studies", destination: "/results", permanent: true },

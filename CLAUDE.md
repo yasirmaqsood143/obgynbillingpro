@@ -3,11 +3,19 @@
 ## Content & claims
 - NEVER add fake or unverifiable stats (no "$4.2M recovered", "200+ practices", "98.2% first-pass", denial-rate promises).
 - NEVER claim certifications/memberships we don't hold (no AAPC, AHIMA, CPC-OB, MGMA, HIMSS, SOC 2 badges).
-- NEVER mention AI / agentic / automated features. Work is done by experienced billing people.
+- NEVER mention AI / agentic features. RPA / automation wording is allowed (Nov 2026 positioning: "RPA-powered OB/GYN RCM"), always paired with "experienced OB/GYN coders" — never "certified".
 - No invented testimonials or named "clients". Case studies on /results are labeled illustrative composites.
 - Allowed trust signals: "8+ years of experience", BAA signed before PHI access, works inside client EHR, no setup fees / no long-term lock-in, free audit.
 - Focus is OB/GYN; other specialties (cardiology, IM, FP…) live on /multi-specialty-billing only.
 - Every content page and blog post: 1,500+ words, accurate codes, cite AMA/CMS for 2027 changes.
+
+## SEO conventions (Nov 2026 GSC/AEO pass)
+- Canonical host is https://obgynbillingpro.com — www redirects (308) in `next.config.ts`; also set www → apex redirect in Vercel → Domains.
+- Every page needs a unique title (≤65 chars), meta description 145–160 chars, canonical and OG. Meta descriptions live in `lib/seo.ts` (META_DESCRIPTIONS by path, overriding front matter); a blog post's `description:` stays the visible lead.
+- Repeated CTA/boilerplate blocks (top bar, InlineCta, CtaBand, sidebars, footer, WhatsApp buttons) carry `data-nosnippet` so Google never uses them as the page snippet.
+- Internal linking lives in `lib/links.ts`: footer "Popular guides", homepage Resource Center, and `RELATED` in `lib/seo.ts` (or `related:` front matter) feeding the "Related OB/GYN Billing Guides" block. Link final URLs only — never a URL that redirects.
+- Sitemap lastmod comes from `updated:` front matter — bump it when you materially change a page. Legal pages are excluded from the sitemap.
+- Before pushing, check the built HTML in `.next/server/app/` for duplicate titles/descriptions and broken internal links.
 
 ## Contact
 - Do NOT show any phone number anywhere. WhatsApp is the primary CTA: use `waLink()` / `<WaButton>` from `lib/site.ts` + `app/components/ui.tsx` (number from NEXT_PUBLIC_WHATSAPP_NUMBER).

@@ -1,13 +1,22 @@
 import type { Metadata } from "next";
 import { getDoc } from "@/lib/content";
 import { abs } from "@/lib/site";
+import { META_DESCRIPTIONS } from "@/lib/seo";
 import { Container, Breadcrumbs, Prose } from "./ui";
 
 type Meta = { title: string; description: string };
 
 export function legalMetadata(slug: string): Metadata {
   const d = getDoc<Meta>("legal", slug)?.data;
-  return d ? { title: d.title, description: d.description, alternates: { canonical: abs(`/${slug}`) } } : {};
+  if (!d) return {};
+  const url = abs(`/${slug}`);
+  const description = META_DESCRIPTIONS[`/${slug}`] ?? d.description;
+  return {
+    title: d.title,
+    description,
+    alternates: { canonical: url },
+    openGraph: { title: `${d.title} | OBGYNBillingPro`, description, url, type: "website" },
+  };
 }
 
 export default function LegalPage({ slug }: { slug: string }) {

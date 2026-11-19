@@ -3,6 +3,7 @@ title: "Myomectomy CPT Codes: Open, Laparoscopic, Robotic and Hysteroscopic (581
 metaTitle: "Myomectomy CPT Codes: 58140, 58146, 58545, 58546, 58561"
 description: "How to code myomectomy by approach, number and weight of fibroids — abdominal, vaginal, laparoscopic/robotic and hysteroscopic — plus adenomyomectomy, fibroid ablation, ICD-10 D25 codes and documentation tips."
 date: "2026-10-15"
+updated: "2026-11-20"
 category: "GYN Surgery Coding"
 image: surgeryTeam
 service: gyn-surgery-coding
@@ -14,6 +15,8 @@ faqs:
     a: "There's no robotic-specific code. A robotic-assisted myomectomy is reported with the laparoscopic codes 58545 or 58546, based on the number and weight of the intramural myomas removed."
   - q: "What is the CPT code for hysteroscopic myomectomy?"
     a: "Hysteroscopic removal of leiomyomata is CPT 58561."
+  - q: "Can 58662 be billed with a laparoscopic myomectomy?"
+    a: "Usually not when the endometriosis is in the same operative field — NCCI bundles it and the payer denies it with CO-97. Report 58662 with modifier XS or 59 only when lesions at a separate anatomic site were excised and the operative note clearly documents it."
   - q: "Is there a CPT code for adenomyomectomy?"
     a: "There's no specific CPT code for excision of adenomyosis (adenomyomectomy). It's generally reported with an unlisted procedure code that matches the approach — for example 58578 for an unlisted laparoscopic procedure on the uterus — with a comparison code and supporting documentation. Check payer policy first."
 ---
@@ -40,6 +43,13 @@ A few points in those descriptors trip people up:
 ## Robotic myomectomy
 
 Robotic assistance doesn't change the code. A robotic-assisted laparoscopic myomectomy is `58545` or `58546`. Some commercial payers accept HCPCS `S2900` as an informational add-on for robotic assistance; Medicare doesn't recognize it. For more on how robotic cases are coded, see our guide to the [CPT code for robotic hysterectomy](/blog/cpt-code-robotic-hysterectomy).
+
+### Robotic vs. laparoscopic vs. open: one-line answers
+
+- **Robotic myomectomy CPT code:** `58545` (1–4 intramural myomas, total ≤250 g, and/or surface myomas) or `58546` (5+ intramural or >250 g).
+- **Laparoscopic myomectomy CPT code:** the same two codes — `58545` / `58546`.
+- **Open (abdominal) myomectomy:** `58140` / `58146`. **Hysteroscopic:** `58561`.
+- **Endometriosis excised during the same case:** `58662` is generally bundled in the same field; see [CPT 58662 and CO-97](/resources/cpt-library#cpt-58662-and-denial-codes-co-97-oa-97-pr-97).
 
 ## Hysteroscopic myomectomy
 

@@ -3,6 +3,7 @@ title: "CPT 99459 Billing Guidelines: Pelvic Exam Add-On Code Explained"
 metaTitle: "CPT 99459 Billing Guidelines & Documentation Requirements"
 description: "CPT 99459 is the pelvic examination add-on code. Learn which E/M and preventive codes it pairs with, what it pays for, documentation requirements, payer coverage and common billing mistakes."
 date: "2026-10-15"
+updated: "2026-11-20"
 category: "Office GYN Coding"
 image: femaleDoctor
 service: coding-audits
@@ -16,6 +17,8 @@ faqs:
     a: "No. 99459 is valued with practice expense only — reflecting clinical staff time for chaperoning and the supplies used — and has no physician work RVUs."
   - q: "Does every payer pay for 99459?"
     a: "No. Coverage and payment vary. Some payers pay it separately, some consider it bundled into the visit, and some haven't published a policy. Check each major payer's policy before deciding how to bill it."
+  - q: "What documentation does CPT 99459 require?"
+    a: "The note should show that a pelvic examination was actually performed — the components examined (external genitalia, vagina, cervix, uterus, adnexa as applicable) and the findings — as part of a qualifying office, consultation or preventive visit. Pairing it with the visit's diagnosis and keeping the exam findings in the visit note supports the add-on."
   - q: "Can 99459 be billed with G0101?"
     a: "Generally no. Medicare's G0101 already describes a screening pelvic and clinical breast examination, so adding a separate pelvic exam add-on would duplicate it."
 ---

@@ -6,7 +6,7 @@ import CalculatorClient from "./CalculatorClient";
 
 export const metadata: Metadata = {
   title: { absolute: "OB/GYN Revenue Leakage Calculator | Free Billing Calculator" },
-  description: "Free OB/GYN billing calculator: estimate your net collection rate, uncollected revenue and the annual cost of claim denials in under two minutes. No email required.",
+  description: "Free OB/GYN revenue leakage calculator: estimate your net collection rate, uncollected revenue and the yearly cost of claim denials in two minutes.",
   alternates: { canonical: abs("/calculator") },
 };
 

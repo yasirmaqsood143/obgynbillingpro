@@ -2,13 +2,15 @@ import Link from "next/link";
 import { Mail, MapPin } from "lucide-react";
 import { SERVICES, RESOURCES } from "@/lib/services";
 import { SITE, waLink } from "@/lib/site";
+import { featuredGuides } from "@/lib/links";
 import { WhatsAppIcon } from "../ui";
 import Logo from "./Logo";
 
 export default function Footer() {
   const year = new Date().getFullYear();
+  const guides = featuredGuides();
   return (
-    <footer className="bg-navy text-white/75">
+    <footer className="bg-navy text-white/75" data-nosnippet>
       <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
         <div className="grid gap-10 lg:grid-cols-[1.3fr_1fr_1fr_1fr]">
           <div>
@@ -48,6 +50,7 @@ export default function Footer() {
           <div>
             <p className="text-sm font-semibold uppercase tracking-wider text-white">Resources</p>
             <ul className="mt-4 space-y-2.5 text-[15px]">
+              <li><Link href="/resources" className="hover:text-white">All OB/GYN Coding Resources</Link></li>
               {RESOURCES.map((r) => (
                 <li key={r.href}><Link href={r.href} className="hover:text-white">{r.name}</Link></li>
               ))}
@@ -60,6 +63,16 @@ export default function Footer() {
             </ul>
           </div>
         </div>
+        {guides.length > 0 && (
+          <nav aria-label="Popular OB/GYN coding and billing guides" className="mt-12 border-t border-white/10 pt-10">
+            <p className="text-sm font-semibold uppercase tracking-wider text-white">Popular OB/GYN Coding &amp; Billing Guides</p>
+            <ul className="mt-4 grid gap-x-8 gap-y-2.5 text-[15px] sm:grid-cols-2 lg:grid-cols-3">
+              {guides.map((g) => (
+                <li key={g.href}><Link href={g.href} className="hover:text-white">{g.label}</Link></li>
+              ))}
+            </ul>
+          </nav>
+        )}
         <div className="mt-12 flex flex-col gap-4 border-t border-white/10 pt-6 text-sm sm:flex-row sm:items-center sm:justify-between">
           <p>© {year} {SITE.legalName}. All rights reserved.</p>
           <div className="flex flex-wrap gap-5">

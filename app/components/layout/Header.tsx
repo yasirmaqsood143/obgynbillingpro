@@ -20,7 +20,7 @@ export default function Header() {
   const obgyn = SERVICES.filter((s) => s.group !== "other");
   return (
     <>
-      <div className="bg-navy text-[13px] text-white/85">
+      <div className="bg-navy text-[13px] text-white/85" data-nosnippet>
         <div className="mx-auto flex max-w-7xl items-center justify-center gap-2 px-4 py-2 text-center sm:px-6 lg:px-8">
           <span><span className="sm:hidden">Free billing audit — no forms.</span><span className="hidden sm:inline">Free OB/GYN billing audit — no forms, no contract.</span></span>
           <a href={waLink()} target="_blank" rel="noopener noreferrer" className="whitespace-nowrap font-semibold text-teal-light underline underline-offset-2 hover:text-white">

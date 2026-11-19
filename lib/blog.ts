@@ -4,7 +4,8 @@ import type { ImageKey } from "./images";
 export type PostMeta = {
   title: string;
   metaTitle?: string;
-  description: string;
+  description: string; // visible lead under the H1 + card excerpt
+  metaDescription?: string; // 145–160 char SERP snippet; falls back to description
   date: string; // YYYY-MM-DD — posts with a future date stay hidden until that day (weekly drip)
   updated?: string;
   category: string;
@@ -12,6 +13,7 @@ export type PostMeta = {
   service: string; // related service slug
   keywords?: string[];
   faqs?: Faq[];
+  related?: string[]; // curated "Related OB/GYN Billing Guides": blog slugs or /resources/... paths
 };
 
 export type Post = Doc<PostMeta> & { readTime: number };

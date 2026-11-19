@@ -81,12 +81,12 @@ export default function MobileMenu({ services, resources, nav, waHref }: { servi
           </Link>
         ))}
 
-        <p className="mt-6 rounded-xl bg-mist p-4 text-sm leading-relaxed text-ink">
+        <p className="mt-6 rounded-xl bg-mist p-4 text-sm leading-relaxed text-ink" data-nosnippet>
           Free OB/GYN billing audit — no forms, no contract. Please don&apos;t send patient information over WhatsApp.
         </p>
       </nav>
 
-      <div className="shrink-0 border-t border-line bg-white px-4 pt-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] sm:px-6">
+      <div data-nosnippet className="shrink-0 border-t border-line bg-white px-4 pt-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] sm:px-6">
         <a href={waHref} target="_blank" rel="noopener noreferrer" className="btn btn-wa btn-lg w-full" data-cta="whatsapp-mobile-menu">
           <WhatsAppIcon /> Free Audit on WhatsApp
         </a>

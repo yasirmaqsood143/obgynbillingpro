@@ -2,11 +2,14 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowRight, Calculator, Clock, CalendarDays } from "lucide-react";
-import { getPost, getPosts, getRelatedPosts } from "@/lib/blog";
+import { getPost, getPosts } from "@/lib/blog";
+import { relatedForPost, commercialFor } from "@/lib/links";
+import { META_DESCRIPTIONS, RELATED } from "@/lib/seo";
+import RelatedGuides from "../../../components/RelatedGuides";
 import { getService } from "@/lib/services";
 import { abs, SITE } from "@/lib/site";
 import { imgUrl } from "@/lib/images";
-import { Container, Breadcrumbs, Photo, Prose, InlineCta, Toc, Faqs, PostCard, CtaBand, JsonLd, WaButton, fmtDate } from "../../../components/ui";
+import { Container, Breadcrumbs, Photo, Prose, InlineCta, Toc, Faqs, CtaBand, JsonLd, WaButton, fmtDate } from "../../../components/ui";
 
 export const revalidate = 3600;
 export const dynamicParams = true;
@@ -23,13 +26,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!post) return { title: "Article not found", robots: { index: false } };
   const d = post.data;
   const url = abs(`/blog/${slug}`);
+  const description = META_DESCRIPTIONS[`/blog/${slug}`] ?? d.metaDescription ?? d.description;
   return {
     title: { absolute: d.metaTitle ?? `${d.title} | OBGYNBillingPro` },
-    description: d.description,
+    description,
     keywords: d.keywords,
     alternates: { canonical: url },
-    openGraph: { title: d.title, description: d.description, url, type: "article", publishedTime: d.date, modifiedTime: d.updated ?? d.date, images: [{ url: imgUrl(d.image, 1200), width: 1200, height: 800, alt: d.title }] },
-    twitter: { card: "summary_large_image", title: d.title, description: d.description },
+    openGraph: { title: d.title, description, url, type: "article", publishedTime: d.date, modifiedTime: d.updated ?? d.date, images: [{ url: imgUrl(d.image, 1200), width: 1200, height: 800, alt: d.title }] },
+    twitter: { card: "summary_large_image", title: d.title, description },
   };
 }
 
@@ -48,7 +52,7 @@ export default async function PostPage({ params }: Props) {
   if (!post) notFound();
   const d = post.data;
   const service = getService(d.service);
-  const related = getRelatedPosts(post, 3);
+  const related = relatedForPost(post, d.related ?? RELATED[`/blog/${slug}`], 4);
   const chunks = withMidCta(post.rendered.chunks);
   const url = abs(`/blog/${slug}`);
   const waMessage = `Hi! I read "${d.title}" and have a question about our billing.`;
@@ -104,7 +108,7 @@ export default async function PostPage({ params }: Props) {
         <aside className="hidden lg:block">
           <div className="sticky top-28 space-y-6">
             <Toc headings={post.rendered.headings} />
-            <div className="rounded-2xl bg-navy p-6 text-white">
+            <div className="rounded-2xl bg-navy p-6 text-white" aria-label="Free Audit Call to Action" data-nosnippet>
               <p className="text-lg font-bold">Free OB/GYN billing audit</p>
               <p className="mt-2 text-sm leading-relaxed text-white/80">No forms. We review your claims, denials and A/R and send a written summary.</p>
               <WaButton size="btn-sm" label="Start on WhatsApp" message={waMessage} className="mt-4 w-full" />
@@ -113,14 +117,7 @@ export default async function PostPage({ params }: Props) {
         </aside>
       </Container>
 
-      {related.length > 0 && (
-        <section className="border-t border-line bg-mist py-16">
-          <Container>
-            <h2 className="text-2xl font-bold text-navy sm:text-3xl">Related articles</h2>
-            <div className="mt-8 grid gap-6 md:grid-cols-3">{related.map((p) => <PostCard key={p.slug} p={p} />)}</div>
-          </Container>
-        </section>
-      )}
+      <RelatedGuides items={related} commercial={commercialFor(d.service, d.category)} />
 
       <CtaBand message={waMessage} />
       <JsonLd

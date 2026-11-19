@@ -3,6 +3,7 @@ title: "OB/GYN Revenue Cycle Management Software vs. Outsourced RCM: How to Comp
 metaTitle: "Best OB/GYN RCM Software vs Outsourced Billing: How to Compare"
 description: "Shopping for OB/GYN revenue cycle management software? Learn what cloud-based RCM tools do, what they don't, the features OB/GYN practices need, demo questions to ask, and when outsourcing makes more sense."
 date: "2026-10-15"
+updated: "2026-11-20"
 category: "Revenue Cycle"
 image: analyticsLaptop
 service: revenue-cycle-management
@@ -10,6 +11,8 @@ keywords: ["best obgyn revenue cycle management software", "compare obgyn rcm so
 faqs:
   - q: "What is the best revenue cycle management software for OB/GYN?"
     a: "There isn't one best product for every practice. The right choice depends on your size, existing EHR, obstetric volume and in-house staff. Prioritize OB-specific features — pregnancy tracking, global maternity and 2027 maternity code support, ultrasound and LARC charge capture — plus a strong claim scrubber and reporting."
+  - q: "How do we evaluate whether our current billing company is actually performing?"
+    a: "Ask for the same monthly KPIs every month — net collection rate, days in A/R, A/R over 90 days, denial rate by reason, charge lag and open pregnancies — and compare the trend over at least two or three quarters. A partner that can't produce them by payer and provider, or can't explain movements, isn't managing your revenue cycle."
   - q: "Is cloud-based RCM software HIPAA compliant?"
     a: "Many cloud-based RCM platforms can be used in a HIPAA-compliant way, but compliance depends on the vendor signing a Business Associate Agreement and on how your practice configures access. Always get a signed BAA before using any software that stores patient information."
   - q: "Do I need RCM software if I outsource billing?"
@@ -128,6 +131,21 @@ If you're considering outsourcing, ask:
 - Will they **sign a BAA**?
 
 Be wary of anyone promising specific results before they've looked at your data.
+
+## How do we evaluate whether our current billing company is actually performing?
+
+Whether your billing is in-house, outsourced or run through an EHR vendor's billing service, the test is the same: **the numbers, every month, broken down by payer and provider.** Use this scorecard and the formulas in our [12 OB/GYN billing KPIs guide](/blog/obgyn-billing-kpis):
+
+| KPI | What it tells you | Red flag |
+|---|---|---|
+| Net collection rate | How much of what you're contractually owed is actually collected | Falling, or nobody can calculate it |
+| Days in A/R | How fast claims turn into cash | Rising for two or more months |
+| A/R over 90 days (%) | How much revenue is aging toward write-off | Growing share, especially with one payer |
+| Denial rate by reason | Whether denials are prevented or just reworked | Same reasons (e.g., CO-97, CO-16) every month |
+| Charge lag | How quickly visits become claims | Days between service and claim keep growing |
+| Open pregnancies | Whether global maternity care is tracked to billing | No list, or deliveries not billed promptly |
+
+A good partner sends these without being asked and explains every movement. If you can't get them, start with a [free OB/GYN billing audit](/services) — we'll calculate them from your own data.
 
 ## Total cost of ownership: what to count
 

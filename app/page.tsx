@@ -8,13 +8,15 @@ import { abs } from "@/lib/site";
 import { imgUrl } from "@/lib/images";
 import { Container, SectionHeading, WaButton, Photo, ServiceCard, PostCard, Faqs, CtaBand, Prose, LinkButton } from "./components/ui";
 import { STATES } from "@/lib/areas";
+import { getPost } from "@/lib/blog";
+import RcmAnswerHub, { ENTITY_FAQS } from "./components/RcmAnswerHub";
 
 export const revalidate = 86400;
 
 export const metadata: Metadata = {
   title: { absolute: "OB/GYN Medical Billing Services & RCM Company | OBGYNBillingPro" },
   description:
-    "OB/GYN medical billing services for independent practices: global maternity billing, GYN surgery coding, denial management and full RCM. 8+ years of experience. Free audit on WhatsApp.",
+    "OBGYNBillingPro is an OB/GYN medical billing and RCM company: RPA-assisted eligibility, global maternity and 2027 code billing, GYN surgery coding and denials.",
   alternates: { canonical: abs("/") },
   openGraph: {
     title: "OB/GYN Medical Billing Services | OBGYNBillingPro",
@@ -51,6 +53,18 @@ const WHY = [
   "Honest reporting — we don't promise numbers before we've seen your data",
 ];
 
+/** "2026–2027 OB/GYN Coding & RCM Resource Center" — descriptive-anchor links into the coding hubs. */
+const RESOURCE_CENTER = [
+  { href: "/resources/2027-maternity-transition", title: "2027 maternity code transition guide", text: "What replaces 59400 and 59510 on January 1, 2027 — with a readiness checklist." },
+  { href: "/blog/2027-delivery-codes-59431-59502", title: "2027 delivery codes 59431, 59432, 59502 & 59503", text: "Vaginal, VBAC, primary and repeat cesarean delivery codes and a crosswalk." },
+  { href: "/blog/2027-labor-management-codes-59080-59083", title: "Labor management codes 59080–59083", text: "Initial vs. subsequent day, straightforward vs. complex labor, worked examples." },
+  { href: "/resources/cpt-library", title: "OB/GYN CPT code library", text: "Obstetric, robotic hysterectomy, myomectomy, LARC and ultrasound codes." },
+  { href: "/resources/obgyn-taxonomy-codes", title: "OB/GYN taxonomy code 207V00000X", text: "Every subspecialty taxonomy code plus the Medicaid TH modifier." },
+  { href: "/resources/icd10-o-codes", title: "ICD-10 O code sequencing rules", text: "Chapter 15 sequencing, trimester characters, Z3A and Z37 codes." },
+  { href: "/services", title: "OB/GYN billing & RCM services", text: "Full-service revenue cycle management or individual services." },
+  { href: "/eligibility-verification", title: "Eligibility verification & prior authorization", text: "Benefits and auths confirmed before the visit, delivery or surgery." },
+];
+
 const FAQS = [
   { q: "What does an OB/GYN medical billing company do?", a: "An OB/GYN billing company manages the process of getting paid for women's health care: verifying insurance, obtaining authorizations, coding obstetric and gynecologic services, submitting claims, posting payments, working denials, following up on unpaid claims and billing patients. Specialized companies also handle global maternity package rules and gynecologic surgery coding." },
   { q: "How is the free billing audit done?", a: "Send us a WhatsApp message — there's no form. We'll ask a few questions and arrange read-only access to a sample of your recent claims, remittances and A/R. You'll receive a written summary of what we find, and you're free to use it whether or not you hire us." },
@@ -65,6 +79,7 @@ export default function Home() {
   const posts = getPosts().slice(0, 3);
   const home = getDoc("pages", "home");
   const obgyn = SERVICES.filter((s) => s.group !== "other");
+  const resourceCenter = RESOURCE_CENTER.filter((r) => !r.href.startsWith("/blog/") || getPost(r.href.slice(6)));
 
   return (
     <>
@@ -145,6 +160,8 @@ export default function Home() {
         </Container>
       </section>
 
+      <RcmAnswerHub />
+
       {/* Why us */}
       <section className="py-20">
         <Container className="grid items-center gap-12 lg:grid-cols-2">
@@ -206,6 +223,26 @@ export default function Home() {
         </Container>
       </section>
 
+      {/* Resource center — crawl hub into the coding guides */}
+      <section className="py-20" aria-labelledby="resource-center">
+        <Container>
+          <p className="eyebrow">Free coding resources</p>
+          <h2 id="resource-center" className="mt-3 text-[1.75rem] font-bold leading-[1.2] tracking-tight text-navy sm:text-4xl">2026–2027 OB/GYN Coding &amp; RCM Resource Center</h2>
+          <p className="mt-4 max-w-3xl text-lg leading-relaxed text-ink">Plain-English references our billing team uses every day — kept current for the CPT 2027 maternity changes.</p>
+          <ul className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {resourceCenter.map((r) => (
+              <li key={r.href}>
+                <Link href={r.href} className="group flex h-full flex-col rounded-2xl border border-line bg-white p-5 transition hover:-translate-y-0.5 hover:border-teal/40 hover:shadow-lg hover:shadow-navy/5">
+                  <span className="font-bold leading-snug text-navy group-hover:text-teal">{r.title}</span>
+                  <span className="mt-2 flex-1 text-sm leading-relaxed text-ink">{r.text}</span>
+                  <span className="mt-3 inline-flex items-center gap-1 text-sm font-semibold text-teal">Read <ArrowRight className="h-4 w-4" /></span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </Container>
+      </section>
+
       {/* Long-form */}
       <section className="py-20">
         <Container className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_340px]">
@@ -216,7 +253,7 @@ export default function Home() {
           </div>
           <aside className="space-y-6 lg:sticky lg:top-28 lg:self-start">
             <Photo k="billingLaptop" className="aspect-[4/3] rounded-2xl" sizes="340px" />
-            <div className="rounded-2xl border border-line p-6">
+            <div className="rounded-2xl border border-line p-6" aria-label="Free Audit Call to Action" data-nosnippet>
               <ClipboardCheck className="h-7 w-7 text-teal" />
               <p className="mt-3 text-lg font-bold text-navy">Free OB/GYN billing audit</p>
               <p className="mt-2 text-sm leading-relaxed text-ink">A written review of your denials, coding and A/R — no form, no contract, no cost.</p>
@@ -260,7 +297,7 @@ export default function Home() {
       {/* FAQ */}
       <section className="border-t border-line bg-white py-20">
         <Container className="max-w-4xl">
-          <Faqs faqs={FAQS} title="OB/GYN billing FAQs" />
+          <Faqs faqs={[...ENTITY_FAQS, ...FAQS]} title="OB/GYN billing FAQs" />
         </Container>
       </section>
 

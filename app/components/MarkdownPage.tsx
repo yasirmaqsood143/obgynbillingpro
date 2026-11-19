@@ -4,6 +4,9 @@ import { notFound } from "next/navigation";
 import { ArrowRight, CircleCheck } from "lucide-react";
 import { getDoc, type Faq } from "@/lib/content";
 import { getPostsForService } from "@/lib/blog";
+import { resolveRelated, commercialFor } from "@/lib/links";
+import RelatedGuides from "./RelatedGuides";
+import { META_DESCRIPTIONS, RELATED } from "@/lib/seo";
 import { SERVICES } from "@/lib/services";
 import { SITE, abs } from "@/lib/site";
 import { imgUrl, type ImageKey } from "@/lib/images";
@@ -22,6 +25,8 @@ export type PageMeta = {
   ctas?: { title: string; text: string }[];
   crumb?: string;
   updated?: string;
+  related?: string[]; // curated related guides (blog slugs or /resources/... paths)
+  catalog?: { name: string; description: string }[]; // Service schema hasOfferCatalog items
 };
 
 type Kind = "service" | "resource" | "page";
@@ -30,12 +35,13 @@ export function pageMetadata(collection: string, slug: string, path: string): Me
   const doc = getDoc<PageMeta>(collection, slug);
   if (!doc) return {};
   const d = doc.data;
+  const description = META_DESCRIPTIONS[path] ?? d.metaDescription;
   return {
     title: { absolute: d.metaTitle },
-    description: d.metaDescription,
+    description,
     alternates: { canonical: abs(path) },
-    openGraph: { title: d.metaTitle, description: d.metaDescription, url: abs(path), type: "website", images: [{ url: imgUrl(d.image, 1200), width: 1200, height: 800, alt: d.h1 }] },
-    twitter: { card: "summary_large_image", title: d.metaTitle, description: d.metaDescription },
+    openGraph: { title: d.metaTitle, description, url: abs(path), type: "website", images: [{ url: imgUrl(d.image, 1200), width: 1200, height: 800, alt: d.h1 }] },
+    twitter: { card: "summary_large_image", title: d.metaTitle, description },
   };
 }
 
@@ -53,28 +59,41 @@ export default function MarkdownPage({ collection, slug, path, kind = "service",
   ];
   const ctas = d.ctas?.length ? d.ctas : defaultCtas;
   const crumbs = [...(parent ? [parent] : []), { name: d.crumb ?? d.h1, href: path }];
+  const description = META_DESCRIPTIONS[path] ?? d.metaDescription;
 
   const schema =
     kind === "service"
       ? {
           "@context": "https://schema.org",
           "@type": "Service",
+          "@id": `${abs(path)}#service`,
           name: d.crumb ?? d.h1,
           serviceType: d.crumb ?? d.h1,
-          description: d.metaDescription,
+          description,
           url: abs(path),
           areaServed: { "@type": "Country", name: "United States" },
           provider: { "@type": "Organization", "@id": `${SITE.url}/#organization`, name: SITE.name },
+          ...(d.catalog?.length
+            ? {
+                hasOfferCatalog: {
+                  "@type": "OfferCatalog",
+                  name: d.crumb ?? d.h1,
+                  itemListElement: d.catalog.map((c, i) => ({ "@type": "Offer", position: i + 1, itemOffered: { "@type": "Service", name: c.name, description: c.description } })),
+                },
+              }
+            : {}),
         }
       : {
           "@context": "https://schema.org",
           "@type": kind === "resource" ? "Article" : "WebPage",
           headline: d.h1,
-          description: d.metaDescription,
+          description,
           url: abs(path),
+          mainEntityOfPage: abs(path),
           image: imgUrl(d.image, 1200),
+          inLanguage: "en-US",
           ...(d.updated ? { dateModified: d.updated } : {}),
-          author: { "@type": "Organization", name: SITE.name },
+          author: { "@type": "Organization", "@id": `${SITE.url}/#organization`, name: `${SITE.name} billing team`, url: SITE.url },
           publisher: { "@type": "Organization", "@id": `${SITE.url}/#organization`, name: SITE.name },
         };
 
@@ -114,7 +133,7 @@ export default function MarkdownPage({ collection, slug, path, kind = "service",
         <aside className="hidden lg:block">
           <div className="sticky top-28 space-y-6">
             <Toc headings={headings} />
-            <div className="rounded-2xl bg-navy p-6 text-white">
+            <div className="rounded-2xl bg-navy p-6 text-white" aria-label="Free Audit Call to Action" data-nosnippet>
               <p className="text-lg font-bold">Free billing audit</p>
               <p className="mt-2 text-sm leading-relaxed text-white/80">No forms. Message us on WhatsApp and we&apos;ll review your claims, denials and A/R at no cost.</p>
               <WaButton size="btn-sm" label="Start on WhatsApp" message={d.waMessage} className="mt-4 w-full" />
@@ -133,7 +152,9 @@ export default function MarkdownPage({ collection, slug, path, kind = "service",
         </aside>
       </Container>
 
-      {posts.length > 0 && (
+      {kind === "resource" ? (
+        <RelatedGuides items={[...resolveRelated(d.related ?? RELATED[path]), ...resolveRelated(posts.map((p) => p.slug))].filter((l, i, a) => a.findIndex((x) => x.href === l.href) === i && l.href !== path).slice(0, 4)} commercial={commercialFor(slug === "obgyn-taxonomy-codes" ? "credentialing" : undefined)} />
+      ) : posts.length > 0 && (
         <section className="border-t border-line bg-mist py-16">
           <Container>
             <div className="flex flex-wrap items-end justify-between gap-4">

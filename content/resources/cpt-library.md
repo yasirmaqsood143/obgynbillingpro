@@ -7,10 +7,18 @@ eyebrow: "Quick-reference coding guide"
 lead: "The CPT codes OB/GYN practices use most — obstetric care, ultrasound, contraception, office procedures and gynecologic surgery — organized in one reference, with notes on the most common billing pitfalls and the January 2027 maternity code changes."
 image: billingLaptop
 waMessage: "Hi! I have an OB/GYN CPT coding question."
-updated: "2026-10-15"
+updated: "2026-11-20"
 faqs:
   - q: "What are the most common OB/GYN CPT codes?"
     a: "Office E/M codes (99202–99215), preventive visit codes (99384–99387, 99394–99397), obstetric ultrasound (76801–76817), global obstetric codes such as 59400 and 59510 (through 2026), LARC codes 58300 and 11981, endometrial biopsy 58100, colposcopy 57452–57456, and hysteroscopy and laparoscopy codes such as 58558, 58661 and 58571."
+  - q: "What is the CPT code for a robotic-assisted total laparoscopic hysterectomy with bilateral salpingectomy?"
+    a: "There's no robotic-specific CPT code. A robotic-assisted total laparoscopic hysterectomy with removal of the tubes is reported with 58571 when the uterus weighs 250 g or less, or 58573 when it weighs more than 250 g. HCPCS S2900 is an informational add-on accepted only by some commercial payers."
+  - q: "What is the CPT code for robotic myomectomy?"
+    a: "Robotic myomectomy uses the laparoscopic myomectomy codes: 58545 for 1–4 intramural myomas with a total weight of 250 g or less and/or surface myomas, or 58546 for 5 or more intramural myomas or a total weight over 250 g."
+  - q: "What is the global period for 59410, 59409 and 59430?"
+    a: "Maternity codes such as 59400, 59409, 59410, 59425, 59426, 59430 and 59510–59515 carry the MMM global indicator in the Medicare Physician Fee Schedule: the usual 0-, 10- and 90-day surgical global rules don't apply, and the code descriptor defines what's included."
+  - q: "Does CPT 58662 need a modifier?"
+    a: "Not when it's the only procedure. With a hysterectomy or other laparoscopic procedure in the same operative field, NCCI usually bundles 58662 and a CO-97 denial is correct. Modifier 59 or XS applies only when the lesions were at a separate anatomic site that the operative note clearly documents."
   - q: "What is CPT 58552?"
     a: "CPT 58552 is laparoscopy, surgical, with vaginal hysterectomy, for uterus 250 g or less, with removal of tube(s) and/or ovary(s) — a laparoscopically assisted vaginal hysterectomy (LAVH) with adnexal removal. For a uterus over 250 g with adnexal removal, use 58554."
   - q: "What is CPT 58940?"
@@ -37,6 +45,22 @@ This reference lists the CPT and HCPCS codes we see most often in OB/GYN billing
 | `59618` / `59620` / `59622` | Cesarean after attempted VBAC: global / delivery only / including postpartum |
 | `59425` / `59426` | Antepartum care only, 4–6 visits / 7 or more visits |
 | `59430` | Postpartum care only |
+
+### Delivery and global period quick reference
+
+| Code | Descriptor (summary) | Global indicator | What it includes |
+|---|---|---|---|
+| `59400` | Routine OB care: antepartum, vaginal delivery, postpartum | MMM | All routine antepartum visits, admission, labor, delivery and routine postpartum care |
+| `59409` | Vaginal delivery only (with or without episiotomy and/or forceps) | MMM | Admission, labor management and delivery — no antepartum or postpartum visits |
+| `59410` | Vaginal delivery only, including postpartum care | MMM | Everything in `59409` plus routine postpartum hospital and office care |
+| `59425` | Antepartum care only; 4–6 visits | MMM | Billed once, after the patient's antepartum care with you ends |
+| `59426` | Antepartum care only; 7 or more visits | MMM | Billed once, after the patient's antepartum care with you ends |
+| `59430` | Postpartum care only (separate procedure) | MMM | Routine postpartum care by a clinician who didn't deliver |
+| `59510` | Routine OB care: antepartum, cesarean delivery, postpartum | MMM | All routine antepartum, cesarean and postpartum care |
+| `59514` | Cesarean delivery only | MMM | The cesarean and in-hospital care tied to it |
+| `59515` | Cesarean delivery only, including postpartum care | MMM | `59514` plus routine postpartum care |
+
+**MMM** means maternity: the usual 0-, 10- and 90-day surgical global periods don't apply — the descriptor defines the package. One to three antepartum visits are billed as individual E/M services rather than `59425`. More detail: [59409 vs 59410](/blog/cpt-59409-vs-59410-delivery-codes) and [CPT 59400 explained](/blog/cpt-59400-explained).
 
 **Starting January 1, 2027**, these codes are deleted and replaced by E/M visits plus new labor management (`59080`–`59083`) and delivery codes (`59431`, `59432`, `59502`, `59503`, `59504`). Details in our [2027 maternity transition guide](/resources/2027-maternity-transition). For billing guidance today, see [global maternity billing](/global-maternity-billing).
 
@@ -150,6 +174,33 @@ A frequent error: billing the insertion without the device code (or with the wro
 | `58925` | Ovarian cystectomy, open |
 | `58920` | Wedge resection or bisection of ovary |
 
+### Myomectomy coding matrix
+
+| Approach | 1–4 intramural myomas, total ≤250 g, and/or surface myomas | 5+ intramural myomas, or total weight >250 g |
+|---|---|---|
+| Laparoscopic or robotic | `58545` | `58546` |
+| Abdominal (open) | `58140` | `58146` |
+| Vaginal | `58145` | — |
+| Hysteroscopic (submucosal fibroids) | `58561` | `58561` |
+
+Count and weigh from the operative note and pathology report — the 250-gram threshold and the number of intramural myomas decide the code. See the full [myomectomy CPT codes guide](/blog/myomectomy-cpt-codes).
+
+### CPT 58662 and denial codes CO-97 / OA-97 / PR-97
+
+`58662` is *laparoscopy, surgical; with fulguration or excision of lesions of the ovary, pelvic viscera, or peritoneal surface by any method* — most often endometriosis excision.
+
+- **Alone**, `58662` needs no modifier.
+- **With a laparoscopic hysterectomy** (`58570`–`58573`) or other laparoscopic procedure in the **same operative field**, NCCI generally bundles it, and the payer denies it with **CARC 97**: *"The benefit for this service is included in the payment/allowance for another service/procedure that has already been adjudicated."*
+- **Modifier `59` or `XS`** is justified only when the lesions were at a **separate anatomic site** — for example endometriosis excised from the pelvic sidewall or bladder peritoneum, away from the organs removed — and the operative note says so. Lesions on the uterus, tubes or ovaries that come out with the specimen aren't separately reportable.
+
+| Group + CARC | Meaning | Can you bill the patient? |
+|---|---|---|
+| `CO-97` | Bundled; contractual write-off | No — write off, or correct and resubmit |
+| `OA-97` | Bundled; "other adjustment" | Generally no |
+| `PR-97` | Bundled; assigned to patient responsibility | Only if your contract and the payer allow — question it first |
+
+**To resolve a 58662 CO-97:** read the op note for a distinct site, check the NCCI edit and modifier indicator for that code pair, then either submit a corrected claim with `XS`/`59` and the documentation, or accept the denial as correct. See [CO-97 denial code explained](/blog/co-97-denial-code-explained) and [endometriosis excision coding](/blog/endometriosis-excision-cpt-coding).
+
 ## Hysterectomy
 
 | Approach | ≤250 g | ≤250 g + adnexa | >250 g | >250 g + adnexa |
@@ -159,7 +210,21 @@ A frequent error: billing the insertion without the device code (or with the wro
 | LAVH | `58550` | `58552` | `58553` | `58554` |
 | Vaginal | `58260` | `58262` | `58290` | `58291` |
 
-Abdominal: `58150` (total, with or without adnexa), `58180` (supracervical). There is no separate robotic code — robotic cases use the laparoscopic codes. See [GYN surgery coding](/gyn-surgery-coding) and our article on the [CPT code for robotic hysterectomy](/blog/cpt-code-robotic-hysterectomy).
+Abdominal: `58150` (total, with or without adnexa), `58180` (supracervical). There is no separate robotic code — robotic cases use the laparoscopic codes.
+
+### Robotic-assisted hysterectomy coding
+
+CPT doesn't assign separate codes for robotic assistance (for example the da Vinci system). A **robotic-assisted total laparoscopic hysterectomy (TLH)** is coded by uterine weight and whether tubes and/or ovaries are removed:
+
+| Robotic-assisted TLH | CPT | Example |
+|---|---|---|
+| Uterus 250 g or less | `58570` | TLH only |
+| Uterus 250 g or less, with removal of tube(s) and/or ovary(s) | `58571` | TLH with bilateral salpingectomy |
+| Uterus over 250 g | `58572` | TLH for a large fibroid uterus |
+| Uterus over 250 g, with removal of tube(s) and/or ovary(s) | `58573` | TLH with bilateral salpingo-oophorectomy, large uterus |
+| Robotic technique (HCPCS add-on) | `S2900` | Informational; accepted by only some commercial payers, not Medicare |
+
+Bilateral salpingectomy or oophorectomy is already in `58571`/`58573`, so modifier `50` isn't added. See [GYN surgery coding](/gyn-surgery-coding) and our article on the [CPT code for robotic hysterectomy](/blog/cpt-code-robotic-hysterectomy).
 
 ## Pelvic floor surgery
 
