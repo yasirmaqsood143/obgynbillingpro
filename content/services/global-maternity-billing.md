@@ -1,5 +1,5 @@
 ---
-metaTitle: "Global Maternity Billing Services for OB/GYN Practices | OBGYNBillingPro"
+metaTitle: "Global Maternity Billing Services for OB/GYN Practices"
 metaDescription: "Global OB billing done right: 59400, 59510, 59610, split care, mid-pregnancy insurance changes and the 2027 maternity code transition. Free audit on WhatsApp."
 h1: "Global Maternity Billing Services"
 crumb: "Global Maternity Billing"

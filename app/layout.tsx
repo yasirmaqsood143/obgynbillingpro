@@ -8,7 +8,7 @@ import Header from "./components/layout/Header";
 import Footer from "./components/layout/Footer";
 import WhatsAppButton from "./components/layout/WhatsAppButton";
 import { JsonLd } from "./components/ui";
-import { SITE, waLink } from "@/lib/site";
+import { SITE, waLink, ENTITY_DEFINITION, ALTERNATE_NAMES } from "@/lib/site";
 
 const inter = Inter({ variable: "--font-inter", subsets: ["latin"], display: "swap" });
 const jetbrains = JetBrains_Mono({ variable: "--font-jetbrains", subsets: ["latin"], display: "swap", weight: ["400", "500"] });
@@ -37,13 +37,26 @@ const orgSchema = {
       "@type": ["Organization", "ProfessionalService"],
       "@id": `${SITE.url}/#organization`,
       name: SITE.name,
-      alternateName: "OBGYN Billing Pro",
+      alternateName: ALTERNATE_NAMES,
       url: SITE.url,
       logo: `${SITE.url}/icon.svg`,
       email: SITE.email,
-      description: "Medical billing, coding and revenue cycle management company specializing in OB/GYN practices.",
-      areaServed: { "@type": "Country", name: "United States" },
-      knowsAbout: ["OB/GYN medical billing", "Global maternity billing", "Gynecologic surgery coding", "Claim denial management", "Revenue cycle management", "Physician credentialing"],
+      description: ENTITY_DEFINITION,
+      slogan: SITE.tagline,
+      areaServed: { "@type": "Country", name: "United States", identifier: "US" },
+      knowsAbout: [
+        "OB/GYN revenue cycle management",
+        "RPA medical billing (robotic process automation)",
+        "CPT 2027 maternity codes (59080–59083, 59431, 59432, 59502, 59503)",
+        "Global maternity billing (59400, 59510, 59610)",
+        "Robotic hysterectomy coding (58570–58573)",
+        "Myomectomy and endometriosis surgery coding",
+        "Fertility and REI billing",
+        "Claim denial management (CO-97)",
+        "Insurance eligibility verification and prior authorization",
+        "ICD-10-CM Chapter 15 O code sequencing",
+        "Physician credentialing (taxonomy 207V00000X)",
+      ],
       contactPoint: { "@type": "ContactPoint", contactType: "customer service", email: SITE.email, url: waLink(), availableLanguage: ["English"] },
     },
     { "@type": "WebSite", "@id": `${SITE.url}/#website`, url: SITE.url, name: SITE.name, publisher: { "@id": `${SITE.url}/#organization` } },

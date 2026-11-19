@@ -3,6 +3,7 @@ title: "Modifier 95 vs 93 vs GT vs GQ: Telehealth Modifiers Explained for 2026"
 metaTitle: "Modifier 95 vs 93 vs GT: Telehealth Modifiers (2026 Guide)"
 description: "What modifier 95, 93, GT, GQ and FQ mean, which payers want which, how they work with POS 02 and 10, and the telehealth modifier mistakes that cause denials in OB/GYN practices."
 date: "2026-10-15"
+updated: "2026-11-20"
 category: "Telehealth"
 image: telehealth2
 service: telehealth-billing
@@ -16,6 +17,8 @@ faqs:
     a: "GT is still a valid HCPCS modifier, but its use is limited. Medicare uses it mainly for critical access hospital method II billing, and some Medicaid and commercial plans still request it. Most payers now want modifier 95 instead."
   - q: "What does modifier GQ mean?"
     a: "GQ means via asynchronous (store-and-forward) telecommunications system. Medicare uses it for federal telemedicine demonstration programs in Alaska and Hawaii; a few other payers use it for store-and-forward services."
+  - q: "Which modifier should be used for a telehealth prenatal visit?"
+    a: "Use modifier 95 for a real-time audio-video prenatal visit and 93 when the visit was audio-only, with the place of service the payer requires (usually POS 10 for a patient at home or POS 02 elsewhere). Add TH if the patient's Medicaid plan requires it for prenatal care, and use GT or GQ only when a payer's policy specifically asks for them."
   - q: "Does Medicare require modifier 95?"
     a: "Medicare relies mainly on the place-of-service code — POS 02 or POS 10 — to identify telehealth. Modifier 95 is required only in certain situations defined by CMS. Many commercial and Medicaid plans, however, require modifier 95 on every audio-video visit."
 ---

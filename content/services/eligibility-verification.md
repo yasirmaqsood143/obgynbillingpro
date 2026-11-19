@@ -7,6 +7,16 @@ eyebrow: "Front-end revenue protection"
 lead: "A large share of claim denials start at the front desk — an inactive policy, a missed coordination-of-benefits change, a surgery done without authorization. We verify coverage and benefits before every visit, delivery and procedure, and secure the authorizations your payers require."
 image: hospitalLobby
 waMessage: "Hi! I'd like help with insurance verification and prior authorizations for our OB/GYN practice."
+updated: "2026-11-20"
+catalog:
+  - name: "RPA Eligibility Verification"
+    description: "Automated (RPA) real-time eligibility and benefit checks through payer portals and 270/271 transactions before scheduled visits, deliveries and surgery, reviewed by experienced billing staff."
+  - name: "Prior Authorization Management"
+    description: "Prior authorization requests and status tracking for hysterectomy, myomectomy, laparoscopy, imaging, genetic testing and infertility services, matched to the planned CPT codes."
+  - name: "Pregnancy Coverage Re-Verification"
+    description: "Coverage rechecked during pregnancy and before delivery so plan changes, Medicaid managed care moves and coordination-of-benefits errors are caught before the delivery claim."
+  - name: "Patient Cost Estimates"
+    description: "Copay, deductible and coinsurance summaries so front-desk staff can explain patient responsibility before the service."
 highlights:
   - title: "Verified before the visit"
     text: "Eligibility checked ahead of scheduled appointments, not after the claim denies."
@@ -62,6 +72,20 @@ None of these are fixed by better coding. They're fixed by verifying coverage an
 - Fertility benefits, which are often limited or excluded — see [infertility billing](/infertility-rei-billing)
 
 <!-- cta -->
+
+## How RPA speeds up verification
+
+Most eligibility work is repetitive: log into a payer portal or send a 270 inquiry, read the 271 response, copy plan details into the practice management system and flag anything unusual. That is exactly the kind of rules-based, high-volume task **robotic process automation (RPA)** handles well.
+
+| Step | Handled by RPA | Handled by our billing staff |
+|---|---|---|
+| Run eligibility checks for upcoming appointments | ✓ Batch checks ahead of the schedule | Review every exception |
+| Compare plan, member ID and coordination of benefits to your PM system | ✓ Flags mismatches | Correct the record and confirm with the patient |
+| Check prior authorization status on scheduled procedures | ✓ Status pulled from payer portals | Submit, follow up and appeal auth requests |
+| Re-verify pregnant patients' coverage | ✓ Scheduled rechecks during pregnancy | Resolve plan changes before delivery |
+| Explain benefits and patient cost | — | Summaries for your front desk |
+
+Automation does the lookups; experienced people make the judgment calls. Nothing is sent to a payer on autopilot, and every exception is reviewed before the visit. Verification also feeds the rest of the revenue cycle — see our full [OB/GYN billing services](/services) and the [front-end denial reasons](/blog/top-obgyn-denial-reasons) it prevents.
 
 ## Prior authorization management
 

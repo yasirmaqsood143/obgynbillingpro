@@ -7,7 +7,7 @@ import MdBody, { pageHeadings } from "../../components/MdBody";
 
 export const metadata: Metadata = {
   title: { absolute: "OB/GYN Billing Case Studies | How We Fix Revenue Problems" },
-  description: "Illustrative OB/GYN billing case studies: global maternity gaps, denial backlogs and coding audits — what we review, what we fix and what we measure. No inflated claims.",
+  description: "Illustrative OB/GYN billing case studies: global maternity gaps, denial backlogs and coding audits — what we review, what we fix and how we measure it.",
   alternates: { canonical: abs("/results") },
   openGraph: { title: "OB/GYN Billing Case Studies | OBGYNBillingPro", description: "How we approach common OB/GYN billing problems.", url: abs("/results"), images: [{ url: imgUrl("tabletFinance", 1200), width: 1200, height: 800 }] },
 };

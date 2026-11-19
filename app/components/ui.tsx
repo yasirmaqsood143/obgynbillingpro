@@ -28,7 +28,7 @@ export function SectionHeading({ eyebrow, title, lead, center = false, light = f
 /* ── CTAs ──────────────────────────────────────────────────────────────────── */
 export function WaButton({ label = "Get a Free Audit on WhatsApp", message, size = "", className = "" }: { label?: string; message?: string; size?: "" | "btn-sm" | "btn-lg"; className?: string }) {
   return (
-    <a href={waLink(message)} target="_blank" rel="noopener noreferrer" className={`btn btn-wa ${size} ${className}`} data-cta="whatsapp">
+    <a href={waLink(message)} target="_blank" rel="noopener noreferrer" className={`btn btn-wa ${size} ${className}`} data-cta="whatsapp" data-nosnippet>
       <WhatsAppIcon />
       {label}
     </a>
@@ -46,7 +46,7 @@ export function LinkButton({ href, label, variant = "btn-outline", size = "" }: 
 
 export function CtaBand({ title = "Find out where your practice is losing revenue — free.", text = "Send us a WhatsApp message. We'll review a sample of your claims, denials and A/R and tell you exactly what we see. No forms, no contract, no obligation.", message }: { title?: string; text?: string; message?: string }) {
   return (
-    <section className="relative overflow-hidden bg-teal-dark">
+    <section className="relative overflow-hidden bg-teal-dark" aria-label="Free Audit Call to Action" data-nosnippet>
       <div className="absolute inset-0 opacity-30 grid-bg" aria-hidden="true" />
       <Container className="relative py-16 sm:py-20">
         <div className="grid items-center gap-8 lg:grid-cols-[1.4fr_1fr]">
@@ -69,7 +69,7 @@ export function CtaBand({ title = "Find out where your practice is losing revenu
 
 export function InlineCta({ title, text, message }: { title: string; text: string; message?: string }) {
   return (
-    <aside className="not-prose my-10 rounded-2xl border border-teal/20 bg-teal-light/60 p-6 sm:p-7">
+    <aside aria-label="Free Audit Call to Action" data-nosnippet className="not-prose my-10 rounded-2xl border border-teal/20 bg-teal-light/60 p-6 sm:p-7">
       <p className="text-lg font-bold text-navy">{title}</p>
       <p className="mt-2 text-[15px] leading-relaxed text-ink">{text}</p>
       <div className="mt-4">

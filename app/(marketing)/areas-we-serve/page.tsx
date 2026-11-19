@@ -8,7 +8,7 @@ import MdBody from "../../components/MdBody";
 
 export const metadata: Metadata = {
   title: { absolute: "Areas We Serve | OB/GYN Billing Services in All 50 States" },
-  description: "OB/GYN medical billing for independent practices nationwide — Texas, New Jersey, New York, Florida, California and every other state. State Medicaid and payer expertise.",
+  description: "OB/GYN medical billing for practices in all 50 states: we work remotely inside your EHR and know the Medicaid programs and commercial payers in each region.",
   alternates: { canonical: abs("/areas-we-serve") },
   openGraph: { title: "Areas We Serve | OBGYNBillingPro", description: "OB/GYN billing services in all 50 states.", url: abs("/areas-we-serve"), images: [{ url: imgUrl("city", 1200), width: 1200, height: 800 }] },
 };

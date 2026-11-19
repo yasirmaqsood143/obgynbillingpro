@@ -7,8 +7,18 @@ eyebrow: "CPT 2027 · Effective January 1, 2027"
 lead: "For dates of service on or after January 1, 2027, the global maternity package is gone. Prenatal and postpartum visits move to E/M codes, and new CPT codes report labor management and delivery. Here's what's changing, which codes are affected, and a practical plan to get your practice ready."
 image: newborn
 waMessage: "Hi! I'd like help preparing our practice for the 2027 maternity code changes."
-updated: "2026-10-15"
+updated: "2026-11-20"
 faqs:
+  - q: "Under the CPT 2027 unbundled billing structure, what are labor management codes 59080–59083 based on?"
+    a: "They're based on the complexity of the labor management provided on that calendar day — straightforward or complex — and on whether it's the initial or a subsequent calendar day of the admission. They aren't time-based and don't depend on gestational age, E/M medical decision making or the final delivery route."
+  - q: "A patient is admitted on Jan. 1, 2027 for a vaginal delivery after a previous cesarean, receives complex labor management and delivers later that same calendar day. What is the correct coding?"
+    a: "Report 59081 (initial day labor management, complex) and 59432 (vaginal delivery after previous cesarean delivery). A prior cesarean takes the encounter out of the straightforward category, and labor management is reported in addition to the delivery code. Some payers may ask for a modifier such as 51 on the second code."
+  - q: "A patient's induction begins Monday and labor management continues through Tuesday morning delivery. Which code structure applies?"
+    a: "Report an initial day labor management code for Monday (59080 if straightforward, 59081 if complex), a subsequent day code for Tuesday (59082 or 59083), and the delivery code. The exception is a single continuous visit spanning midnight, which CPT treats as one service reported on one date."
+  - q: "Which statement regarding labor management code reporting is true?"
+    a: "Labor management codes are reported once per calendar date, in addition to the delivery code. They aren't time-based, they include induction and augmentation, and a planned or scheduled cesarean has no labor management code. More than one labor management code on a date is appropriate only for escalation or a transfer of care."
+  - q: "Which criterion prevents a labor management encounter from being classified as straightforward?"
+    a: "Any deviation from the straightforward criteria. AMA examples include a prior cesarean, multiple gestation, non-vertex presentation and deteriorating maternal or fetal conditions; fetal monitoring that needs physician intervention or abnormal labor progression also makes the service complex."
   - q: "When do the new maternity codes take effect?"
     a: "The CPT 2027 maternity care changes apply to dates of service on or after January 1, 2027. Deleted codes are not valid for dates of service on or after that date."
   - q: "Which maternity codes are deleted in 2027?"
@@ -75,6 +85,80 @@ According to the AMA's guidance, labor is **complex if any of the straightforwar
 | `59623` | Uterine tamponade for postpartum hemorrhage (balloon, catheter, vacuum or packing) |
 
 First- and second-degree laceration repair by a clinician other than the one who performed the delivery is reported with `59300`.
+
+## Labor management codes 59080–59083: quick answers
+
+These are the questions we hear most from coders preparing for the CPT 2027 exam questions and for real January claims.
+
+### What are labor management codes 59080–59083 based on?
+
+**The complexity of the labor management provided on that calendar day** — straightforward or complex — and whether it's the **initial** or a **subsequent** calendar day of the admission. They are **not** based on time, gestational age, E/M medical decision making or the final delivery route.
+
+| Code | Day | Complexity |
+|---|---|---|
+| `59080` | Initial calendar day of labor management | Straightforward |
+| `59081` | Initial calendar day of labor management | Complex |
+| `59082` | Each subsequent calendar day | Straightforward |
+| `59083` | Each subsequent calendar day | Complex |
+
+### What makes labor management "straightforward"?
+
+All of the AMA's straightforward criteria must be met. Labor is **complex** if any one isn't:
+
+| Straightforward requires… | Examples that make it complex |
+|---|---|
+| A singleton fetus in vertex presentation | Twins or other multiples; breech or other non-vertex presentation |
+| Routine maternal and fetal monitoring | Monitoring that needs physician or QHP intervention |
+| Normal progression, or routine induction/augmentation | Abnormal or arrested labor progression |
+| Stable medical conditions needing no added management in labor | Deteriorating maternal or fetal conditions |
+| **No prior cesarean** | A trial of labor after cesarean (TOLAC/VBAC attempt) |
+
+### Why does a previous cesarean make labor complex?
+
+"No prior cesarean" is one of the straightforward criteria, so a patient laboring after a cesarean (TOLAC) is reported with the complex codes (`59081` / `59083`) on every day of labor management — whether she delivers vaginally (`59432`) or by repeat cesarean (`59503`).
+
+### How often are labor management codes reported?
+
+**Once per calendar date** after labor management begins. Additional codes on the same date are appropriate only when care escalates or transfers — for example to maternal-fetal medicine — not for routine coverage or handoffs within a group.
+
+### What about a multi-day induction?
+
+A patient whose **induction begins Monday** and who delivers **Tuesday morning** gets an **initial day code for Monday** (`59080` or `59081`), a **subsequent day code for Tuesday** (`59082` or `59083`), and the delivery code. The one exception is a single **continuous visit** — continuous attendance on one patient — that crosses midnight, which CPT treats as one service reported on one date.
+
+### Which statement about labor management reporting is true?
+
+- It's reported **in addition to** the delivery code, including on the same day.
+- It's **not time-based**, so prolonged services (`99418`) aren't added.
+- Induction, augmentation and fetal monitoring by the managing physician are **included**.
+- A **planned or scheduled cesarean has no labor management code**; pre-delivery hospital care is E/M.
+
+## Worked example 1: VBAC on January 1, 2027
+
+> A patient with one previous low transverse cesarean is admitted on **January 1, 2027** in labor, planning a VBAC. Her physician manages labor that day and she delivers vaginally later the **same calendar day**.
+
+| What happened | Code | Why |
+|---|---|---|
+| Labor management, first calendar day, prior cesarean | `59081` | Initial day; a prior cesarean fails the straightforward criteria, so it's complex |
+| Vaginal delivery after previous cesarean | `59432` | VBAC delivery; includes placenta delivery, 1st/2nd-degree repair and routine same-day postpartum care |
+| Diagnoses | `O34.211`, `Z3A.__`, `Z37.0` | Maternal care for low transverse scar from previous cesarean, weeks of gestation, single live birth |
+
+Both codes are reported for January 1. CPT doesn't require a modifier, but some payers may ask for one (such as `51`) on the second code. Because the date of service is on or after January 1, 2027, the deleted VBAC codes (`59610`–`59614`) can't be used.
+
+<!-- cta -->
+
+## Worked example 2: transfer mid-pregnancy (Arizona to Wisconsin)
+
+> A patient with a previous **vertical** cesarean scar has **2 first-trimester antenatal visits in Arizona**, moves to **Wisconsin**, has **10 more antenatal visits**, a **planned repeat cesarean**, and postpartum care with the Wisconsin physician.
+
+**If the care and delivery happen in 2026** (global package rules):
+
+| Practice | Codes | Notes |
+|---|---|---|
+| Arizona | Office E/M for each visit (e.g., `99203`, `99213`) | 1–3 visits are below the `59425` threshold of 4–6 visits |
+| Wisconsin | `59426` + `59515` | 7+ antepartum visits; cesarean delivery including postpartum care. Not `59510`, because another physician provided part of the antepartum care |
+| Diagnoses (both) | `O34.212`, `Z3A.__`; at delivery add `Z37.0` | Vertical scar from previous cesarean is the principal diagnosis; Z3A on every date of service |
+
+**If the same care happens in 2027:** every antepartum visit in both states is an E/M claim; the planned repeat cesarean is `59503` with **no labor management code** (there was no labor); and postpartum visits are E/M codes. Our [split maternity care billing example](/blog/split-maternity-care-billing-transfer-example) walks through every step.
 
 ## How each phase of care will be reported
 

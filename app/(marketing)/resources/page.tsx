@@ -11,7 +11,7 @@ export const revalidate = 86400;
 
 export const metadata: Metadata = {
   title: { absolute: "OB/GYN Billing & Coding Resources | Free Guides" },
-  description: "Free OB/GYN billing resources: 2027 maternity code transition, ICD-10 O codes and sequencing, OB/GYN taxonomy codes, CPT code library and revenue calculator.",
+  description: "Free OB/GYN billing resources: the 2027 maternity code transition, ICD-10 O code sequencing, taxonomy code 207V00000X, a CPT code library and calculator.",
   alternates: { canonical: abs("/resources") },
 };
 

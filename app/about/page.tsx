@@ -7,7 +7,7 @@ import MdBody from "../components/MdBody";
 
 export const metadata: Metadata = {
   title: { absolute: "About OBGYNBillingPro | OB/GYN Billing Specialists, 8+ Years" },
-  description: "Meet OBGYNBillingPro: medical billing and revenue cycle specialists for independent OB/GYN practices, with 8+ years of experience. Honest reporting, accurate coding.",
+  description: "About OBGYNBillingPro: medical billing and revenue cycle specialists for independent OB/GYN practices, with 8+ years of experience and honest reporting.",
   alternates: { canonical: abs("/about") },
   openGraph: { title: "About OBGYNBillingPro", description: "OB/GYN billing specialists with 8+ years of experience.", url: abs("/about"), images: [{ url: imgUrl("meeting", 1200), width: 1200, height: 800 }] },
 };

@@ -1,5 +1,5 @@
 ---
-metaTitle: "Medical Billing for Cardiology & Other Specialties | OBGYNBillingPro"
+metaTitle: "Medical Billing for Cardiology & Other Specialties"
 metaDescription: "Beyond OB/GYN: medical billing and RCM for cardiology, internal medicine, family practice, pediatrics, urology and more. Same transparent process. Free billing audit."
 h1: "Medical Billing for Cardiology & Other Specialties"
 crumb: "Other Specialties"

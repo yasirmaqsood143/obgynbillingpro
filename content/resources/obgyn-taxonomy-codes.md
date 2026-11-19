@@ -7,7 +7,7 @@ eyebrow: "Provider enrollment reference"
 lead: "The healthcare provider taxonomy code for Obstetrics & Gynecology is 207V00000X. This guide lists every OB/GYN subspecialty code, the codes for midwives and women's health nurse practitioners, and how taxonomy affects enrollment and claims."
 image: signing
 waMessage: "Hi! I have a question about OB/GYN taxonomy codes and enrollment."
-updated: "2026-10-15"
+updated: "2026-11-20"
 faqs:
   - q: "What is the taxonomy code for OB/GYN?"
     a: "The taxonomy code for Obstetrics & Gynecology physicians is 207V00000X. It sits in the Allopathic & Osteopathic Physicians grouping of the NUCC Health Care Provider Taxonomy code set."
@@ -15,6 +15,10 @@ faqs:
     a: "Physicians who practice gynecology only can use 207VG0400X (Gynecology). Physicians who practice obstetrics only can use 207VX0000X (Obstetrics). Most general OB/GYNs use 207V00000X."
   - q: "What is the taxonomy code for maternal-fetal medicine?"
     a: "Maternal & Fetal Medicine is 207VM0101X."
+  - q: "What is a TH modifier?"
+    a: "TH is a HCPCS Level II modifier meaning \"obstetrical treatment/services, prenatal or postpartum.\" Medicaid programs use it to identify pregnancy-related services — for example prenatal and postpartum E/M visits billed outside a global package — and sometimes to waive copayments."
+  - q: "Is the TH modifier required by Medicaid?"
+    a: "Many state Medicaid programs and Medicaid managed care plans require or accept TH on prenatal and postpartum visits, but rules differ by state and plan. Follow each payer's current obstetric billing policy; Medicare generally doesn't require it."
   - q: "Can a provider have more than one taxonomy code?"
     a: "Yes. A provider can list multiple taxonomy codes on their NPPES record but must designate one as primary. The taxonomy reported on a claim should reflect the specialty under which the service was provided and match the provider's enrollment with that payer."
   - q: "Where does the taxonomy code go on a claim?"
@@ -26,6 +30,18 @@ faqs:
 ## The short answer
 
 **The NUCC taxonomy code for Obstetrics & Gynecology is `207V00000X`.** It's the code most general OB/GYN physicians list as their primary taxonomy on their National Provider Identifier (NPI) record. If you subspecialize, a more specific code may describe your practice better — the full list is below.
+
+| Copy this code | For |
+|---|---|
+| `207V00000X` | **Obstetrics & Gynecology** (general OB/GYN) |
+| `207VX0000X` | Obstetrics |
+| `207VG0400X` | Gynecology |
+| `207VM0101X` | Maternal & Fetal Medicine (MFM) |
+| `207VE0102X` | Reproductive Endocrinology (REI / infertility) |
+| `207VX0201X` | Gynecologic Oncology |
+| `207VF0040X` | Female Pelvic Medicine & Reconstructive Surgery (urogynecology) |
+
+Every taxonomy code is 10 characters and ends in `X` — copy it exactly, including the zeros.
 
 Taxonomy codes come from the Health Care Provider Taxonomy code set maintained by the National Uniform Claim Committee (NUCC). The set is updated twice a year, so it's worth checking the NUCC website for the latest version before an enrollment.
 
@@ -123,6 +139,21 @@ Your practice management system populates these fields from the provider setup, 
 | A urogynecologist | `207VF0040X` |
 | A certified nurse-midwife | `367A00000X` |
 | An OB/GYN or women's health nurse practitioner | `363LX0001X` or `363LW0102X` |
+
+## The TH modifier for obstetric claims
+
+Taxonomy tells a payer **who** you are; the `TH` modifier tells it **what kind of care** a service was. The two are often set up together during Medicaid enrollment, so here's the short version.
+
+| Item | Detail |
+|---|---|
+| **Modifier** | `TH` (HCPCS Level II) |
+| **Descriptor** | Obstetrical treatment/services, prenatal or postpartum |
+| **Main users** | State Medicaid programs and Medicaid managed care plans; a few commercial plans |
+| **Typical use** | Prenatal and postpartum E/M visits billed outside a global package, e.g. `99213-TH` |
+| **Why it matters** | Identifies maternity services, can waive cost-sharing for pregnancy care, routes claims to maternity payment rules |
+| **Diagnosis needed** | A pregnancy-related code — Chapter 15 O code, `Z34.-`, `O09.-`, or `Z39.2` for routine postpartum follow-up |
+
+**How TH prevents Medicaid denials:** a plan that requires `TH` may deny, or apply the wrong benefits to, a prenatal visit billed without it — and a `TH` line with a non-pregnancy diagnosis is a common denial too. Keep a payer-by-payer rule in your billing system. From January 1, 2027, when every prenatal visit becomes its own E/M claim, payers will lean on `TH` and pregnancy diagnoses even more. Full guide: [TH modifier in medical billing](/blog/th-modifier-obstetric-billing).
 
 ## How we help
 

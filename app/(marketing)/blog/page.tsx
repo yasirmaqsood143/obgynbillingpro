@@ -8,7 +8,7 @@ export const revalidate = 3600;
 
 export const metadata: Metadata = {
   title: { absolute: "OB/GYN Billing & Coding Blog | CPT, ICD-10, Denials & 2027" },
-  description: "Weekly OB/GYN medical billing and coding articles: CPT and ICD-10 guides, denial fixes, telehealth modifiers, global maternity billing and the 2027 code transition.",
+  description: "Weekly OB/GYN billing and coding articles: CPT and ICD-10 guides, CO-97 and denial fixes, telehealth modifiers, global maternity billing and 2027 changes.",
   alternates: { canonical: abs("/blog") },
 };
 

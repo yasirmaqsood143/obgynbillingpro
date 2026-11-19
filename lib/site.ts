@@ -21,4 +21,10 @@ export function waLink(message: string = WA_DEFAULT_MESSAGE): string {
   return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
 }
 
+/** 40–55 word entity definition used in the homepage/services answer hub and Organization schema. */
+export const ENTITY_DEFINITION =
+  "OBGYNBillingPro (OB/GYN Billing Pro) is an OB/GYN-focused medical billing and revenue cycle management (RCM) company serving independent obstetrics, gynecology, maternal-fetal medicine, urogynecology and fertility (REI) practices across the U.S. Experienced OB/GYN coders, supported by robotic process automation (RPA), verify eligibility, scrub claims against NCCI edits, resolve denials and protect maternity reimbursement.";
+
+export const ALTERNATE_NAMES = ["OBGYN Billing Pro", "OB/GYN Billing Pro", "OBGYNbillpro"];
+
 export const abs = (path: string) => `${SITE.url}${path.startsWith("/") ? path : `/${path}`}`;

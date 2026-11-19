@@ -3,6 +3,7 @@ title: "Multiple O Codes in Pregnancy: How to Sequence Primary and Secondary Dia
 metaTitle: "O Codes Sequencing: Multiple O Codes, Primary & Secondary"
 description: "When a pregnant patient has several conditions, which O code goes first? Seven worked examples covering prenatal visits, deliveries, twins, incidental conditions and companion Z codes."
 date: "2026-10-15"
+updated: "2026-11-20"
 category: "ICD-10 Coding"
 image: pregnantBelly
 service: global-maternity-billing
@@ -12,6 +13,10 @@ faqs:
     a: "Yes. Report every Chapter 15 code that describes a condition affecting the pregnancy and addressed or relevant at the encounter. The code for the main reason for the encounter is sequenced first."
   - q: "Can an O code ever be secondary?"
     a: "Generally O codes are sequenced before codes from other chapters. The main exception is when the provider documents that the pregnancy is incidental to the encounter — then the condition is listed first with Z33.1 (pregnant state, incidental), and no O code is used for that condition."
+  - q: "Do all O codes have to be sequenced first?"
+    a: "Chapter 15 O codes take sequencing priority over codes from other chapters, and every O code that applies to the encounter should be reported. The only exception is when the provider documents that the pregnancy is incidental to the visit: then the other condition is first-listed with Z33.1 and no O code is used."
+  - q: "How are secondary O codes sequenced?"
+    a: "After the O code for the main reason for the encounter, list the other O codes for conditions that affect the pregnancy and are relevant to the visit, then any other-chapter codes that add detail, then Z3A for weeks of gestation and, at delivery, Z37 for the outcome."
   - q: "Where does Z3A go?"
     a: "Z3A weeks-of-gestation codes are secondary codes reported with Chapter 15 codes on the maternal record. They are never the first-listed diagnosis."
   - q: "What if two complications are equally responsible for the visit?"
@@ -33,6 +38,18 @@ The ICD-10-CM Official Guidelines for Chapter 15 boil down to a handful of princ
 5. **Pregnancy is assumed to be affected** unless the provider documents otherwise. If the provider states the condition isn't affecting the pregnancy, code the condition first and add `Z33.1`.
 6. **Z codes support, not lead.** `Z3A` (weeks of gestation) and `Z37` (outcome of delivery) are secondary. `Z34` normal-pregnancy supervision is never combined with O codes.
 7. **Delivery encounters** list the main circumstance or complication of the delivery first; for a cesarean, generally the condition that led to the cesarean.
+
+### Quick reference: all O codes, secondary O codes and companion codes
+
+| Position on the claim | What goes there | Rule to remember |
+|---|---|---|
+| First-listed (principal) | The O code for the **main reason** for the encounter or admission; at a cesarean, the condition that led to it | Chapter 15 codes outrank other chapters |
+| Secondary O codes | **All other** O codes for conditions affecting the pregnancy and relevant to this encounter | Report every one that applies, not just the first |
+| Other-chapter detail codes | Codes that add specificity (e.g., the specific infection or type of diabetes) | Listed after the related O code |
+| `Z3A.__` | Weeks of gestation | Maternal record only; never first; not for postpartum or abortive-outcome encounters |
+| `Z37.-` | Outcome of delivery | Maternal **delivery** record only |
+
+**Trimester and fetus characters:** the final character of many O codes is the trimester on the date of the encounter — first trimester is under 14 weeks 0 days, second is 14 weeks 0 days to under 28 weeks 0 days, and third is 28 weeks 0 days until delivery. Codes such as `O36` and `O32` need a 7th character for the fetus (`0` for a single gestation, `1`–`9` to identify the fetus in a multiple gestation). And `O80` (uncomplicated delivery) can't be combined with any other Chapter 15 code.
 
 Now let's apply those rules.
 
